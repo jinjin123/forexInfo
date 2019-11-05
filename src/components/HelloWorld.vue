@@ -25,7 +25,10 @@
     </el-row>
     <div>十年债卷</div>
     <el-row type="flex" class="row-bg" justify="start">
-      <el-col :span="5">
+      <el-col :span="5" v-for="(ids,index) in bonds" :key="index">
+        <div style="width:200px;height:50px;border:1px solid #000" :id="ids"></div>
+      </el-col>
+      <!-- <el-col :span="5">
         <div style="width:200px;height:50px;border:1px solid #000"></div>
       </el-col>
       <el-col :span="5">
@@ -35,15 +38,12 @@
         <div style="width:200px;height:50px;border:1px solid #000"></div>
       </el-col>
       <el-col :span="5">
-        <div style="width:200px;height:50px;border:1px solid #000"></div>
-      </el-col>
-      <el-col :span="5">
-        <div style="width:200px;height:50px;border:1px solid #000"></div>
+        <div style="width:200px;height:50px;border:1px solid #000"></div> -->
       </el-col>
     </el-row>
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
-        <div style="width:200px;height:50px;border:1px solid #000"></div>
+        <div style="width:200px;height:50px;border:1px solid #000" id="23778"></div>
       </el-col>
     </el-row>
     <div>指数</div>
@@ -128,6 +128,8 @@
         data() {
             return {
                 src: 'https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white',
+                newNews: null,
+                bonds: [23705, 23901, 23693, 23738, 23673],
                 ws: null
             }
         },
