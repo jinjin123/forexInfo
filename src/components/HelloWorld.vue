@@ -153,9 +153,7 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="DJ !=null"
           :class="DJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>DJ30</h4>
-          <h4>{{ DJ.last}} &#12288; {{DJ.pc}} &#12288;
-            {{ DJ.pcp}} <br> {{ DJ.low }} &#12288;
-            {{DJ.high}}</h4>
+          <h4>{{ DJ.last}} &#8194; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
           <h4>DJ30</h4>
@@ -165,8 +163,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="NDSQ !=null"
           :class="NDSQ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NDSQ</h4>
-          <h4>{{ NDSQ.last}} &#12288; {{NDSQ.pc}} &#12288;
-            {{ NDSQ.pcp}} <br> {{ NDSQ.low }} &#12288;
+          <h4>{{ NDSQ.last}} &#8194; {{NDSQ.pc}} &#8194;
+            {{ NDSQ.pcp}} <br> {{ NDSQ.low }}&#8194;
             {{NDSQ.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -177,8 +175,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="SPX !=null"
           :class="SPX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>SPX</h4>
-          <h4>{{ SPX.last}} &#12288; {{SPX.pc}} &#12288;
-            {{ SPX.pcp}} <br> {{ SPX.low }} &#12288;
+          <h4>{{ SPX.last}} &#8194; {{SPX.pc}} &#8194;
+            {{ SPX.pcp}} <br> {{ SPX.low }}  &#8194;;
             {{SPX.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -189,8 +187,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="JPN !=null"
           :class="JPN.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>JPN</h4>
-          <h4>{{ JPN.last}} &#12288; {{JPN.pc}} &#12288;
-            {{ JPN.pcp}} <br> {{ JPN.low }} &#12288;
+          <h4>{{ JPN.last}} &#8194; {{JPN.pc}}  &#8194;
+            {{ JPN.pcp}} <br> {{ JPN.low }} &#8194;
             {{JPN.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -201,8 +199,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="DAX !=null"
           :class="DAX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>DAX</h4>
-          <h4>{{ DAX.last}} &#12288; {{DAX.pc}} &#12288;
-            {{ DAX.pcp}} <br> {{ DAX.low }} &#12288;
+          <h4>{{ DAX.last}} &#8194; {{DAX.pc}} &#8194;
+            {{ DAX.pcp}} <br> {{ DAX.low }}  &#8194;
             {{DAX.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -215,8 +213,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="FRA !=null"
           :class="FRA.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>FRA</h4>
-          <h4>{{ FRA.last}} &#12288; {{FRA.pc}} &#12288;
-            {{ FRA.pcp}} <br> {{ FRA.low }} &#12288;
+          <h4>{{ FRA.last}} &#8194; {{FRA.pc}}  &#8194;
+            {{ FRA.pcp}} <br> {{ FRA.low }} &#8194;
             {{FRA.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -227,8 +225,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="UK !=null"
           :class="UK.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>UK</h4>
-          <h4>{{ UK.last}} &#12288; {{UK.pc}} &#12288;
-            {{ UK.pcp}} <br> {{ UK.low }} &#12288;
+          <h4>{{ UK.last}} &#8194; {{UK.pc}}  &#8194;
+            {{ UK.pcp}} <br> {{ UK.low }}  &#8194;
             {{UK.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -239,8 +237,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="AUS !=null"
           :class="AUS.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUS</h4>
-          <h4>{{ AUS.last}} &#12288; {{AUS.pc}} &#12288;
-            {{ AUS.pcp}} <br> {{ AUS.low }} &#12288;
+          <h4>{{ AUS.last}}  &#8194;{{AUS.pc}}  &#8194;
+            {{ AUS.pcp}} <br> {{ AUS.low }} &#8194;
             {{AUS.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -251,8 +249,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="UpIn !=null"
           :class="UpIn.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>上证指数</h4>
-          <h4>{{ UpIn.last}} &#12288; {{UpIn.pc}} &#12288;
-            {{ UpIn.pcp}} <br> {{ UpIn.low }} &#12288;
+          <h4>{{ UpIn.last}} &#8194; {{UpIn.pc}}  &#8194;
+            {{ UpIn.pcp}} <br> {{ UpIn.low }}  &#8194;
             {{UpIn.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -263,8 +261,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="Sin !=null"
           :class="Sin.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>深证指数</h4>
-          <h4>{{ Sin.last}} &#12288; {{Sin.pc}} &#12288;
-            {{ Sin.pcp}} <br> {{ Sin.low }} &#12288;
+          <h4>{{ Sin.last}} &#8194; {{Sin.pc}} &#8194;
+            {{ Sin.pcp}} <br> {{ Sin.low }} &#8194;;
             {{Sin.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -277,8 +275,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="lshen !=null"
           :class="lshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>沪深300</h4>
-          <h4>{{ lshen.last}} &#12288; {{lshen.pc}} &#12288;
-            {{ lshen.pcp}} <br> {{ lshen.low }} &#12288;
+          <h4>{{ lshen.last}}  &#8194; {{lshen.pc}}  &#8194;
+            {{ lshen.pcp}} <br> {{ lshen.low }}  &#8194;
             {{lshen.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -289,8 +287,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="hshen !=null"
           :class="hshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>恒生指数</h4>
-          <h4>{{ hshen.last}} &#12288; {{hshen.pc}} &#12288;
-            {{ hshen.pcp}} <br> {{ hshen.low }} &#12288;
+          <h4>{{ hshen.last}}  &#8194; {{hshen.pc}}  &#8194;
+            {{ hshen.pcp}} <br> {{ hshen.low }}  &#8194;
             {{hshen.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -301,8 +299,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="China !=null"
           :class="China.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>富时50指数</h4>
-          <h4>{{ China.last}} &#12288; {{China.pc}} &#12288;
-            {{ China.pcp}} <br> {{ China.low }} &#12288;
+          <h4>{{ China.last}} &#8194; {{China.pc}}  &#8194;
+            {{ China.pcp}} <br> {{ China.low }}  &#8194;
             {{China.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -522,7 +520,7 @@
                 this.ws.onclose = this.websocketclose;
             },
             websocketonopen() {
-                this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8853:%%pid-8826:%%pid-8838:%%pid-171:%%pid-20:%%pid-8884:%%pid-178:%%pid-8839:%%pid-8873:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-179:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8853:%%pidExt-8826:%%pidExt-8838:%%pidExt-171:%%pidExt-20:%%pidExt-8884:%%pidExt-178:%%pidExt-8839:%%pidExt-8873:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-179:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]')
+                this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]');
                 setInterval(this.hearbeat, 15000);
             },
             websocketonmessage(e) {
@@ -554,35 +552,35 @@
                             this.fTen = null;
                             this.fTen = this.bondsdata;
                             break;
-                        case "8873":
+                        case "7805":
                             this.DJ = null;
                             this.DJ = this.bondsdata;
                             break
-                        case "20":
+                        case "7800":
                             this.NDSQ = null;
                             this.NDSQ = this.bondsdata;
                             break
-                        case "8839":
+                        case "7802":
                             this.SPX = null;
                             this.SPX = this.bondsdata;
                             break
-                        case "178":
+                        case "7813":
                             this.JPN = null;
                             this.JPN = this.bondsdata;
                             break
-                        case "8826":
+                        case "7808":
                             this.DAX = null;
                             this.DAX = this.bondsdata;
                             break
-                        case "8853":
+                        case "7803":
                             this.FRA = null;
                             this.FRA = this.bondsdata;
                             break
-                        case "8838":
+                        case "7801":
                             this.UK = null;
                             this.UK = this.bondsdata;
                             break
-                        case "171":
+                        case "7807":
                             this.AUS = null;
                             this.AUS = this.bondsdata;
                             break
@@ -598,7 +596,7 @@
                             this.lshen = null;
                             this.lshen = this.bondsdata;
                             break
-                        case "179":
+                        case "7814":
                             this.hshen = null;
                             this.hshen = this.bondsdata;
                             break
@@ -619,8 +617,8 @@
                             this.RMB = this.bondsdata;
                             break
                         case "8884":
-                            this.VIX = null;
-                            this.VIX = this.bondsdata;
+                            this.Vix = null;
+                            this.Vix = this.bondsdata;
                             break
                         case "8849":
                             this.Oil = null;
