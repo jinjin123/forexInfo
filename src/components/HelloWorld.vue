@@ -176,7 +176,7 @@
           :class="SPX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>SPX</h4>
           <h4>{{ SPX.last}} &#8194; {{SPX.pc}} &#8194;
-            {{ SPX.pcp}} <br> {{ SPX.low }}  &#8194;;
+            {{ SPX.pcp}} <br> {{ SPX.low }} &#8194;;
             {{SPX.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -187,7 +187,7 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="JPN !=null"
           :class="JPN.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>JPN</h4>
-          <h4>{{ JPN.last}} &#8194; {{JPN.pc}}  &#8194;
+          <h4>{{ JPN.last}} &#8194; {{JPN.pc}} &#8194;
             {{ JPN.pcp}} <br> {{ JPN.low }} &#8194;
             {{JPN.high}}</h4>
         </div>
@@ -200,7 +200,7 @@
           :class="DAX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>DAX</h4>
           <h4>{{ DAX.last}} &#8194; {{DAX.pc}} &#8194;
-            {{ DAX.pcp}} <br> {{ DAX.low }}  &#8194;
+            {{ DAX.pcp}} <br> {{ DAX.low }} &#8194;
             {{DAX.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -213,7 +213,7 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="FRA !=null"
           :class="FRA.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>FRA</h4>
-          <h4>{{ FRA.last}} &#8194; {{FRA.pc}}  &#8194;
+          <h4>{{ FRA.last}} &#8194; {{FRA.pc}} &#8194;
             {{ FRA.pcp}} <br> {{ FRA.low }} &#8194;
             {{FRA.high}}</h4>
         </div>
@@ -225,8 +225,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="UK !=null"
           :class="UK.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>UK</h4>
-          <h4>{{ UK.last}} &#8194; {{UK.pc}}  &#8194;
-            {{ UK.pcp}} <br> {{ UK.low }}  &#8194;
+          <h4>{{ UK.last}} &#8194; {{UK.pc}} &#8194;
+            {{ UK.pcp}} <br> {{ UK.low }} &#8194;
             {{UK.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -237,7 +237,7 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="AUS !=null"
           :class="AUS.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUS</h4>
-          <h4>{{ AUS.last}}  &#8194;{{AUS.pc}}  &#8194;
+          <h4>{{ AUS.last}} &#8194;{{AUS.pc}} &#8194;
             {{ AUS.pcp}} <br> {{ AUS.low }} &#8194;
             {{AUS.high}}</h4>
         </div>
@@ -249,8 +249,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="UpIn !=null"
           :class="UpIn.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>上证指数</h4>
-          <h4>{{ UpIn.last}} &#8194; {{UpIn.pc}}  &#8194;
-            {{ UpIn.pcp}} <br> {{ UpIn.low }}  &#8194;
+          <h4>{{ UpIn.last}} &#8194; {{UpIn.pc}} &#8194;
+            {{ UpIn.pcp}} <br> {{ UpIn.low }} &#8194;
             {{UpIn.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -275,8 +275,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="lshen !=null"
           :class="lshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>沪深300</h4>
-          <h4>{{ lshen.last}}  &#8194; {{lshen.pc}}  &#8194;
-            {{ lshen.pcp}} <br> {{ lshen.low }}  &#8194;
+          <h4>{{ lshen.last}} &#8194; {{lshen.pc}} &#8194;
+            {{ lshen.pcp}} <br> {{ lshen.low }} &#8194;
             {{lshen.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -287,8 +287,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="hshen !=null"
           :class="hshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>恒生指数</h4>
-          <h4>{{ hshen.last}}  &#8194; {{hshen.pc}}  &#8194;
-            {{ hshen.pcp}} <br> {{ hshen.low }}  &#8194;
+          <h4>{{ hshen.last}} &#8194; {{hshen.pc}} &#8194;
+            {{ hshen.pcp}} <br> {{ hshen.low }} &#8194;
             {{hshen.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -299,8 +299,8 @@
         <div style="width:200px;height:50px;border:1px solid #000" v-if="China !=null"
           :class="China.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>富时50指数</h4>
-          <h4>{{ China.last}} &#8194; {{China.pc}}  &#8194;
-            {{ China.pcp}} <br> {{ China.low }}  &#8194;
+          <h4>{{ China.last}} &#8194; {{China.pc}} &#8194;
+            {{ China.pcp}} <br> {{ China.low }} &#8194;
             {{China.high}}</h4>
         </div>
         <div style="width:200px;height:50px;border:1px solid #000" v-else>
@@ -371,16 +371,34 @@
         </div>
       </el-col>
     </el-row>
-    <el-row class="row-bg" justify="start">
-      <el-col :span="24">
-        <div>新兴市场新闻</div>
-        <div style="width:830px;height:250px;border:1px solid #000">
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-      </el-col>
-    </el-row>
+    <div style="float:right">
+      <div id="container" style="width:1020px;height:500px;border:1px solid #000;"></div>
+      <!-- <div id="k-content" style="width:1020px;height:470px;border:1px solid #000;"></div> -->
+    </div>
+    <!-- <el-row class="row-bg" justify="start"> -->
+    <!-- <el-col :span="14"> -->
+    <div style="float:left">
+      <div>新兴市场新闻</div>
+      <div style="width:830px;height:250px;border:1px solid #000">
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <!-- </el-col> -->
+    <!-- </el-row> -->
+    <!-- <el-row class="row-bg" justify="start"> -->
+    <!-- <el-col :span="14"> -->
+    <div style="float:left">
+      <div>特朗普新闻</div>
+      <div style="width:830px;height:140px;border:1px solid #000">
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <!-- </el-col> -->
+    <!-- </el-row> -->
   </div>
 </template>
 
@@ -388,6 +406,8 @@
     export default {
         data() {
             return {
+                option: null,
+                myChart: {},
                 src: 'https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white',
                 newNews: null,
                 // bonds: [{
@@ -499,12 +519,21 @@
             }
         },
         mounted() {
-            this.initWebSocket()
+            this.rendterPic()
+                // this.initWebSocket()
         },
         destroyed: function() {
             this.websocketclose()
         },
         methods: {
+            rendterPic() {
+                this.myChart = this.$echarts.init(document.getElementById("container"))
+                this.myChart.setOption(this.Tlines.initKOption(this.TmpData.kdata))
+                window.addEventListener("resize", () => {
+                    this.myChart.resize();
+                });
+
+            },
             initWebSocket() {
                 const wsuri = process.env.WS_API;
                 const csuri = process.env.CY_API;
