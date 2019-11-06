@@ -3,6 +3,7 @@
 > A Vue.js project
 
 ![demo](http://assets.processon.com/chart_image/5dbc00fce4b04913a286558c.png?_=1572969203254)
+![demo2](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex.png)
 ## Build Setup
 
 ``` bash
