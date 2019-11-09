@@ -447,19 +447,13 @@
         </el-col>
     </el-row>
     <!-- <div stylejj="float:left"> -->
-      <br>
-      <el-col :span="11">
+      <el-col :span="11" style="margin-left:-875px;margin-top:50px">
       <div>新兴市场新闻</div>
       <div style="width:830px;height:250px;border:1px solid #000">
-        <ul>
-          <li></li>
-        </ul>
+        <i-table height="250" v-if="staticNew !=null" :columns="newsColumns"   :data="staticNew"></i-table>
       </div>
       <div>特朗普新闻</div>
-      <div style="width:830px;height:140px;border:1px solid #000">
-        <ul>
-          <li></li>
-        </ul>
+      <div style="width:830px;height:150px;border:1px solid #000">
       </div>
       </el-col>
     <!-- </div> -->
@@ -802,26 +796,6 @@
           </div>
         </el-col>
     </el-row>
-    <!-- <div style="float:right"> -->
-      <!-- <div id="container" style="width:1020px;height:500px;border:1px solid #000;"></div> -->
-      <!-- <div id="k-content" style="width:1020px;height:470px;border:1px solid #000;"></div> -->
-    <!-- </div> -->
-    <!-- <el-row class="row-bg" justify="start"> -->
-    <!-- <el-col :span="14"> -->
-    <!-- <div style="float:left">
-      <div>新兴市场新闻</div>
-      <div style="width:830px;height:250px;border:1px solid #000">
-        <ul>
-          <li></li>
-        </ul>
-      </div>
-      <div>特朗普新闻</div>
-      <div style="width:830px;height:140px;border:1px solid #000">
-        <ul>
-          <li></li>
-        </ul>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -970,20 +944,64 @@
                 Dollar: null,
                 Gold: null,
                 data: {},
+                newsColumns: [{
+                    title: "新闻",
+                    key: "content"
+                }, {
+                    title: "状态",
+                    key: "status"
+                }],
+                data1: [{
+                    content: '王小明',
+                    status: '北京市朝阳区芍药居'
+                }, {
+                    content: '王小',
+                    status: '北京市朝阳区芍药居'
+                }],
+                staticNew: null,
                 ws: null
             }
         },
         created() {
             // this.initWebSocket()
+            var self = this;
+            this.$axios
+                .get(
+                    "/news/index/"
+                )
+                .then(function(res) {
+                    var tmp = res.data.data
+                    var newList = []
+                    for (var x = 0; x < tmp.length; x++) {
+                        if (tmp[x].status == 0) {
+                            tmp[x].status = "负面"
+                            newList.push(tmp[x])
+                        } else {
+                            tmp[x].status = "正面"
+                            newList.push(tmp[x])
+                        }
+                    }
+                    self.staticNew = newList
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
         },
         mounted() {
-            this.initWebSocket()
-                // this.rendterPic()
+            // this.initWebSocket()
+            // this.rendterPic()
         },
         destroyed: function() {
             this.websocketclose()
         },
         methods: {
+            rowClassName(row, index) {
+                if (row.status === "正面") {
+                    return 'demo-table-info-row';
+                } else {
+                    return 'demo-table-error-row';
+                }
+            },
             rendterPic() {
                 this.myChart = this.$echarts.init(document.getElementById("container"))
                 this.myChart.setOption(this.Tlines.initKOption(this.TmpData.kdata))
@@ -1296,5 +1314,36 @@
         animation-iteration-count: 1;
         -webkit-animation: fade 1s infinite;
         -webkit-animation-iteration-count: 1;
+    }
+    
+    .ivu-table .demo-table-info-row td {
+        background-color: #a6e7b6;
+        color: #fff;
+    }
+    
+    .ivu-table .demo-table-error-row td {
+        background-color: #ff6600;
+        color: #fff;
+        ;
+    }
+    
+    .ivu-table td.demo-table-info-column {
+        background-color: #2db7f5;
+        color: #fff;
+    }
+    
+    .ivu-table .demo-table-info-cell-name {
+        background-color: #2db7f5;
+        color: #2db7f5;
+    }
+    
+    .ivu-table .demo-table-info-cell-age {
+        background-color: #ff6600;
+        color: #fff;
+    }
+    
+    .ivu-table .demo-table-info-cell-address {
+        background-color: #187;
+        color: #fff;
     }
 </style>
