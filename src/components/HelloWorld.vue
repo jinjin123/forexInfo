@@ -454,6 +454,7 @@
       </div>
       <div>特朗普新闻</div>
       <div style="width:830px;height:150px;border:1px solid #000">
+        <i-table height="150" v-if="trumpNew !=null" :columns="trumpColumns"   :data="trumpNew"></i-table>
       </div>
       </el-col>
     <!-- </div> -->
@@ -951,6 +952,16 @@
                     title: "状态",
                     key: "status"
                 }],
+                trumpColumns: [{
+                    title: "新闻",
+                    key: "content"
+                }, {
+                    title: "状态",
+                    key: "status"
+                }, {
+                    title: "时间",
+                    key: "time"
+                }],
                 data1: [{
                     content: '王小明',
                     status: '北京市朝阳区芍药居'
@@ -959,6 +970,7 @@
                     status: '北京市朝阳区芍药居'
                 }],
                 staticNew: null,
+                trumpNew: null,
                 ws: null
             }
         },
@@ -986,6 +998,7 @@
                 .catch(function(error) {
                     console.log(error);
                 })
+            setInterval(this.getTrump, 20000);
         },
         mounted() {
             // this.initWebSocket()
@@ -995,6 +1008,32 @@
             this.websocketclose()
         },
         methods: {
+            getTrump() {
+                var self = this
+                this.$axios
+                    .get(
+                        "/news/trump/"
+                    )
+                    .then(function(res) {
+                        var tmp = res.data.data
+                        var trumpList = []
+                        for (var x = 0; x < tmp.length; x++) {
+                            if (tmp[x].status == 0) {
+                                tmp[x].status = "负面"
+                                tmp[x].time = tmp[x].time.replace("T", " ")
+                                trumpList.push(tmp[x])
+                            } else {
+                                tmp[x].status = "正面"
+                                tmp[x].time = tmp[x].time.replace("T", " ")
+                                trumpList.push(tmp[x])
+                            }
+                        }
+                        self.trumpNew = trumpList
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    })
+            },
             rowClassName(row, index) {
                 if (row.status === "正面") {
                     return 'demo-table-info-row';
