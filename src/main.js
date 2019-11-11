@@ -11,10 +11,14 @@ import echarts from 'echarts'
 import axios from 'axios'
 import 'iview/dist/styles/iview.css'
 import iView from 'iview'
+// import VueSocketIO from 'vue-socket.io'
+// import socketio from 'socket.io-client';
+
 // import Table from 'iview'
 // Vue.component('Table', Table)
 
 Vue.prototype.$echarts = echarts
+    // Vue.prototype.$socketio = socketio
 Vue.prototype.TmpData = TmpData
 Vue.prototype.Tlines = Tlines
 Vue.prototype.$axios = axios.create({
@@ -25,6 +29,10 @@ axios.defaults.baseURL = '/news';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 Vue.use(ElementUI)
 Vue.use(iView)
+    // Vue.use(VueSocketIO, 'https://sscpgdknke.jin10.com:8080/socket.io/?EIO=3&transport=polling');
+    // Vue.use(new VueSocketIO({
+    // connection: "https://sscpgdknke.jin10.com:8080/socket.io/?EIO=3&transport=polling"
+    // }))
 
 Vue.config.productionTip = false
 
