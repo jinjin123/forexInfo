@@ -779,8 +779,8 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="MXN !=null"
           :class="MXN.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/MXN</h4>
-          <h4>{{ MXN.last_close}} &#12288; {{MXN.pc}} &#12288;
-            {{ MXN.pcp}} <br> {{ MXN.low }} &#12288;
+          <h4>{{ MXN.last_close}} &#8197; {{MXN.pc}} &#8197;
+            {{ MXN.pcp}} <br> {{ MXN.low }} &#8197;
             {{MXN.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
@@ -791,8 +791,8 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ZAR !=null"
           :class="ZAR.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/ZAR</h4>
-          <h4>{{ ZAR.last_close}} &#12288; {{ZAR.pc}} &#12288;
-            {{ ZAR.pcp}} <br> {{ ZAR.low }} &#12288;
+          <h4>{{ ZAR.last_close}} &#8197;  {{ZAR.pc}} &#8197;
+            {{ ZAR.pcp}} <br> {{ ZAR.low }} &#8197;
             {{ZAR.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
@@ -950,14 +950,16 @@
                 data: {},
                 newsColumns: [{
                     title: "新闻",
-                    key: "content"
+                    key: "content",
+                    width: 600
                 }, {
                     title: "状态",
                     key: "status"
                 }],
                 trumpColumns: [{
                     title: "新闻",
-                    key: "content"
+                    key: "content",
+                    width: 600
                 }, {
                     title: "状态",
                     key: "status"

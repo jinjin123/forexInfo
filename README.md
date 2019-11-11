@@ -6,7 +6,6 @@
 ![demo2](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex.png)
 ![demo3](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex2.png)
 ![demo5](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex3.png)
-![demo4](https://github.com/jinjin123/forexInfo/blob/master/src/assets/trump.png)
 ## Build Setup
 
 ``` bash
