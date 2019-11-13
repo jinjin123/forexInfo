@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-![demo](http://assets.processon.com/chart_image/5dbc00fce4b04913a286558c.png?_=1573352130263)
+![demo](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forexspider.png)
 ![demo2](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex.png)
 ![demo3](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex4.png)
 ![demo5](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forex3.png)
