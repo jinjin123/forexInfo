@@ -977,9 +977,9 @@
         },
         mounted() {
             this.initWebSocket()
-            this.initF()
-            this.initS()
-            this.initI()
+                // this.initF()
+                // this.initS()
+                // this.initI()
                 // this.rendterPic()
         },
         destroyed: function() {
@@ -1048,110 +1048,110 @@
                         console.log(error);
                     })
             },
-            initF() {
-                let that = this
-                var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-                    "force new connection": !0,
-                    "reconnection": !1
-                })
-                socket.on('connect', function() {
-                    socket.emit("switch_channel", 1, function() {})
-                    console.log("forex socket conn")
-                })
-                socket.on('flash', function(data) {
-                    if (data.data) {
-                        let playload = {
-                            content: data.data.content.replace("<b>", "").replace("</b>", ""),
-                            tag: data.id,
-                            time: data.time,
-                            exttime: data.time.split(" ")[0]
-                        };
-                        that.syncPost(playload)
-                    }
-                })
-                socket.on('error', function(err) {
-                    console.log(err)
-                })
-                socket.on('connect_error', function(err) {
-                    console.log(err)
-                })
-                socket.on('disconnect', function() {
-                    console.log("forex socket close")
-                })
-            },
-            initS() {
-                let that = this
-                var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-                    "force new connection": !0,
-                    "reconnection": !1
-                })
-                socket.on('connect', function() {
-                    socket.emit("switch_channel", 2, function() {})
-                    console.log("shop socket conn")
-                })
-                socket.on('flash', function(data) {
-                    if (data.data) {
-                        let playload = {
-                            content: data.data.content.replace("<b>", "").replace("</b>", ""),
-                            tag: data.id,
-                            time: data.time,
-                            exttime: data.time.split(" ")[0]
-                        };
-                        that.syncPost(playload)
-                    }
-                })
-                socket.on('error', function(err) {
-                    console.log(err)
-                })
-                socket.on('connect_error', function(err) {
-                    console.log(err)
-                })
-                socket.on('disconnect', function() {
-                    console.log("shop socket close")
-                })
-            },
-            initI() {
-                let that = this
-                var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-                    "force new connection": !0,
-                    "reconnection": !1
-                })
-                socket.on('connect', function() {
-                    console.log("index socket conn")
-                    socket.emit("switch_channel", 3, function() {})
-                })
-                socket.on('flash', function(data) {
-                    if (data.data) {
-                        let playload = {
-                            content: data.data.content.replace("<b>", "").replace("</b>", ""),
-                            tag: data.id,
-                            time: data.time,
-                            exttime: data.time.split(" ")[0]
-                        };
-                        that.syncPost(playload)
-                    }
+            // initF() {
+            //     let that = this
+            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
+            //         "force new connection": !0,
+            //         "reconnection": !1
+            //     })
+            //     socket.on('connect', function() {
+            //         socket.emit("switch_channel", 1, function() {})
+            //         console.log("forex socket conn")
+            //     })
+            //     socket.on('flash', function(data) {
+            //         if (data.data) {
+            //             let playload = {
+            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
+            //                 tag: data.id,
+            //                 time: data.time,
+            //                 exttime: data.time.split(" ")[0]
+            //             };
+            //             that.syncPost(playload)
+            //         }
+            //     })
+            //     socket.on('error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('connect_error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('disconnect', function() {
+            //         console.log("forex socket close")
+            //     })
+            // },
+            // initS() {
+            //     let that = this
+            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
+            //         "force new connection": !0,
+            //         "reconnection": !1
+            //     })
+            //     socket.on('connect', function() {
+            //         socket.emit("switch_channel", 2, function() {})
+            //         console.log("shop socket conn")
+            //     })
+            //     socket.on('flash', function(data) {
+            //         if (data.data) {
+            //             let playload = {
+            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
+            //                 tag: data.id,
+            //                 time: data.time,
+            //                 exttime: data.time.split(" ")[0]
+            //             };
+            //             that.syncPost(playload)
+            //         }
+            //     })
+            //     socket.on('error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('connect_error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('disconnect', function() {
+            //         console.log("shop socket close")
+            //     })
+            // },
+            // initI() {
+            //     let that = this
+            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
+            //         "force new connection": !0,
+            //         "reconnection": !1
+            //     })
+            //     socket.on('connect', function() {
+            //         console.log("index socket conn")
+            //         socket.emit("switch_channel", 3, function() {})
+            //     })
+            //     socket.on('flash', function(data) {
+            //         if (data.data) {
+            //             let playload = {
+            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
+            //                 tag: data.id,
+            //                 time: data.time,
+            //                 exttime: data.time.split(" ")[0]
+            //             };
+            //             that.syncPost(playload)
+            //         }
 
-                })
-                socket.on('error', function(err) {
-                    console.log(err)
-                })
-                socket.on('connect_error', function(err) {
-                    console.log(err)
-                })
-                socket.on('disconnect', function() {
-                    console.log("index socket close")
-                })
-            },
-            syncPost(playload) {
-                this.$axios
-                    .post("/news/jten/", playload)
-                    .then(function(res) {
-                        // console.log(res);
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
-            },
+            //     })
+            //     socket.on('error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('connect_error', function(err) {
+            //         console.log(err)
+            //     })
+            //     socket.on('disconnect', function() {
+            //         console.log("index socket close")
+            //     })
+            // },
+            // syncPost(playload) {
+            //     this.$axios
+            //         .post("/news/jten/", playload)
+            //         .then(function(res) {
+            //             // console.log(res);
+            //         })
+            //         .catch(function(error) {
+            //             console.log(error);
+            //         });
+            // },
             getTrump() {
                 var self = this
                 this.$axios
