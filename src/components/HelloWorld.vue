@@ -4,7 +4,8 @@
     <el-col :span="11">
       <!-- <iframe frameborder="0" width="830" height="530" scrolling="yes" :src="src"></iframe> -->
       <div style="width:830px;height:530px;border:1px solid #000">
-        <i-table height="530" v-if="jTenNew !=null" :columns="jTenColumns" :data="jTenNew"></i-table>
+        <i-table height="490" v-if="jTenNew !=null" :columns="jTenColumns" :data="jTenNew"></i-table>
+        <Page :total="dataCount" :page-size="pageSize" show-total class="paging" @on-change="changepage" @on-page-size-change="pages" show-sizer show-elevator show-total></Page>
       </div>
     </el-col>
     <div>加密货币</div>
@@ -146,6 +147,30 @@
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>法十</h4>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="aTen !=null"
+          :class="aTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          <h4>澳十</h4>
+          <h4>{{ aTen.last}} &#12288; {{aTen.pc}} &#12288;
+            {{ aTen.pcp}} <br> {{ aTen.low }} &#12288;
+            {{aTen.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4>澳十</h4>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="xTen !=null"
+          :class="xTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          <h4>新十</h4>
+          <h4>{{ xTen.last}} &#12288; {{xTen.pc}} &#12288;
+            {{ xTen.pcp}} <br> {{ xTen.low }} &#12288;
+            {{xTen.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4>新十</h4>
         </div>
       </el-col>
     </el-row>
@@ -807,89 +832,19 @@
     export default {
         data() {
             return {
+                dataCount: 0,
+                pageSize: 10,
+                xia: 0,
                 myChart: {},
-                src: 'https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white',
                 newNews: null,
-                // bonds: [{
-                //     "id": "23705",
-                //     "name": "美十"
-                // }, {
-                //     "id": "23901",
-                //     "name": "日十"
-                // }, {
-                //     "id": "23693",
-                //     "name": "德十"
-                // }, {
-                //     "id": "23738",
-                //     "name": "意十"
-                // }, {
-                //     "id": "23673",
-                //     "name": "英十"
-                // }],
-                // aIndex: [{
-                //     "name": "DJ30",
-                //     "id": "8873"
-                // }, {
-                //     "name": "NDSQ100",
-                //     "id": "20"
-                // }, {
-                //     "name": "SPX500",
-                //     "id": "8839"
-                // }, {
-                //     "name": "JPN225",
-                //     "id": "178"
-                // }, {
-                //     "name": "DAX",
-                //     "id": "8826"
-                // }],
-                // nIndex: [{
-                //     "name": "FRA40",
-                //     "id": "8853"
-                // }, {
-                //     "name": "UK100",
-                //     "id": "8838"
-                // }, {
-                //     "name": "AUS200",
-                //     "id": "171"
-                // }, {
-                //     "name": "上证指数",
-                //     "id": "40820"
-                // }, {
-                //     "name": "深证指数",
-                //     "id": "942630"
-                // }],
-                // iIndex: [{
-                //     "name": "沪深300",
-                //     "id": "940801"
-                // }, {
-                //     "name": "恒生指数",
-                //     "id": "179"
-                // }, {
-                //     "name": "China50",
-                //     "id": "44486"
-                // }],
-                // sIndex: [{
-                //     "name": "铜",
-                //     "id": "8831"
-                // }, {
-                //     "name": "铂金",
-                //     "id": "8910"
-                // }, {
-                //     "name": "WTI",
-                //     "id": "8849"
-                // }, {
-                //     "name": "离岸人民币",
-                //     "id": "961728"
-                // }, {
-                //     "name": "VIX",
-                //     "id": "8884"
-                // }],
                 mTen: null,
                 jTen: null,
                 dTen: null,
                 yTen: null,
                 yiTen: null,
                 fTen: null,
+                aTen: null,
+                xTen: null,
                 BTC: null,
                 ETH: null,
                 EOS: null,
@@ -1012,6 +967,7 @@
                         }
                     }
                     self.staticNew = newList
+                    self.dataCount = res.data.total
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -1030,12 +986,47 @@
             this.websocketclose()
         },
         methods: {
+            pages(num) { //修改每页显示条数时调用
+                this.pageSize = num;
+                this.changepage(1);
+            },
+            changepage(index) {
+                //index当前页码
+                this.xia = (index - 1) * this.pageSize;
+                let this1 = this;
+                let playload = {
+                    "offset": this1.xia,
+                    "limit": this1.pageSize
+                }
+                this.$axios
+                    .post("/news/jten_off/", playload)
+                    .then(function(res) {
+                        var tmp = res.data.data
+                        var newList = []
+                        for (var x = 0; x < tmp.length; x++) {
+                            if (tmp[x].status == 0) {
+                                tmp[x].status = "负面"
+                                newList.push(tmp[x])
+                            } else {
+                                tmp[x].status = "正面"
+                                newList.push(tmp[x])
+                            }
+                        }
+                        this1.jTenNew = newList
+                        this1.dataCount = res.data.total
+                    })
+                    .catch(function(error) {
+                        //
+                    })
+            },
             getJten() {
                 var self = this
+                let playload = {
+                    "offset": 0,
+                    "limit": 10
+                }
                 this.$axios
-                    .get(
-                        "/news/jten/"
-                    )
+                    .post("/news/jten_off/", playload)
                     .then(function(res) {
                         var tmp = res.data.data
                         var jTenList = []
@@ -1051,6 +1042,7 @@
                             }
                         }
                         self.jTenNew = jTenList
+                            // self.dataCount = res.data.total
                     })
                     .catch(function(error) {
                         console.log(error);
@@ -1215,7 +1207,7 @@
                 this.ws.onclose = this.websocketclose;
             },
             websocketonopen() {
-                this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-16:%%pid-4:%%pid-48:%%pid-51:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-14:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-16:%%pidExt-4:%%pidExt-48:%%pidExt-51:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-14:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]')
+                this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-23878:%%pid-42410:%%pid-16:%%pid-4:%%pid-48:%%pid-51:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-14:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-23878:%%pidExt-42410:%%pidExt-16:%%pidExt-4:%%pidExt-48:%%pidExt-51:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-14:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]');
                 setInterval(this.hearbeat, 12000);
             },
             websocketonmessage(e) {
@@ -1240,6 +1232,12 @@
                             break;
                         case "23778":
                             this.fTen = this.bondsdata;
+                            break;
+                        case "23878":
+                            this.aTen = this.bondsdata;
+                            break;
+                        case "42410":
+                            this.xTen = this.bondsdata;
                             break;
                         case "7805":
                             this.DJ = this.bondsdata;
