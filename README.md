@@ -1,5 +1,6 @@
 # forex
 
+cd dist jar -cvf web.war ./**
 > A Vue.js project
 
 ![demo](http://assets.processon.com/chart_image/5dbc00fce4b04913a286558c.png?_=1573352130263)

@@ -952,7 +952,7 @@
             var self = this;
             this.$axios
                 .get(
-                    "/news/index/"
+                    process.env.NLP_API + "/news/index/"
                 )
                 .then(function(res) {
                     var tmp = res.data.data
@@ -999,7 +999,7 @@
                     "limit": this1.pageSize
                 }
                 this.$axios
-                    .post("/news/jten_off/", playload)
+                    .post(process.env.NLP_API + "/news/jten_off/", playload)
                     .then(function(res) {
                         var tmp = res.data.data
                         var newList = []
@@ -1026,7 +1026,7 @@
                     "limit": 10
                 }
                 this.$axios
-                    .post("/news/jten_off/", playload)
+                    .post(process.env.NLP_API + "/news/jten_off/", playload)
                     .then(function(res) {
                         var tmp = res.data.data
                         var jTenList = []
@@ -1156,7 +1156,7 @@
                 var self = this
                 this.$axios
                     .get(
-                        "/news/trump/"
+                        process.env.NLP_API + "/news/trump/"
                     )
                     .then(function(res) {
                         var tmp = res.data.data

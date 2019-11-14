@@ -9,7 +9,7 @@ module.exports = {
 
         // Paths
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
+        assetsPublicPath: '/web/',
         proxyTable: {
             '/news': {
                 target: "http://192.168.50.100:8082/news",
@@ -54,11 +54,10 @@ module.exports = {
     build: {
         // Template for index.html
         index: path.resolve(__dirname, '../dist/index.html'),
-
         // Paths
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
+        assetsPublicPath: '/web/',
 
         /**
          * Source Maps
