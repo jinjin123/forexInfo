@@ -14,7 +14,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="BTC != null"
           :class="BTC.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
           <h4>BTC</h4>
-          <h4>{{ BTC.bid_price }} &#12288; {{BTC.rise_fall_value}} &#12288;
+          <h4>{{ BTC.last_price }} &#12288; {{BTC.rise_fall_value}} &#12288;
             {{ (BTC.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ BTC.open}} &#12288; {{ BTC.low }} &#12288;
             {{BTC.high}}</h4>
         </div>
@@ -26,7 +26,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ETH != null"
           :class="ETH.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
           <h4>ETH</h4>
-          <h4>{{ ETH.bid_price }} &#12288; {{ETH.rise_fall_value}} &#12288;
+          <h4>{{ ETH.last_price }} &#12288; {{ETH.rise_fall_value}} &#12288;
             {{ (ETH.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ ETH.open}} &#12288; {{ ETH.low }} &#12288;
             {{ETH.high}}</h4>
         </div>
@@ -38,7 +38,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EOS != null"
           :class="EOS.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>EOS</h4>
-          <h4>{{ EOS.bid_price }} &#12288; {{EOS.rise_fall_value}} &#12288;
+          <h4>{{ EOS.last_price }} &#12288; {{EOS.rise_fall_value}} &#12288;
             {{ (EOS.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ EOS.open}} &#12288; {{ EOS.low }} &#12288;
             {{EOS.high}}</h4>
         </div>
@@ -50,7 +50,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="OKB != null"
           :class="OKB.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>OKB</h4>
-          <h4>{{ OKB.bid_price }} &#12288; {{OKB.rise_fall_value}} &#12288;
+          <h4>{{ OKB.last_price }} &#12288; {{OKB.rise_fall_value}} &#12288;
             {{ (OKB.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ OKB.open}} &#12288; {{ OKB.low }} &#12288;
             {{OKB.high}}</h4>
         </div>
@@ -62,7 +62,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="LINK != null"
           :class="LINK.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>LINK</h4>
-          <h4>{{ LINK.bid_price }} &#12288; {{LINK.rise_fall_value}} &#12288;
+          <h4>{{ LINK.last_price }} &#12288; {{LINK.rise_fall_value}} &#12288;
             {{ (LINK.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ LINK.open}} &#12288; {{ LINK.low }} &#12288;
             {{LINK.high}}</h4>
         </div>
@@ -79,7 +79,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="mTen !=null"
           :class="mTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>美十</h4>
-          <h4>{{ mTen.bid}} &#12288; {{mTen.pc}} &#12288;
+          <h4>{{ mTen.lst}} &#12288; {{mTen.pc}} &#12288;
             {{ mTen.pcp}} <br> {{ mTen.low }} &#12288;
             {{mTen.high}}</h4>
         </div>
@@ -91,7 +91,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="jTen !=null"
           :class="jTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>日十</h4>
-          <h4>{{ jTen.bid}} &#12288; {{jTen.pc}} &#12288;
+          <h4>{{ jTen.last}} &#12288; {{jTen.pc}} &#12288;
             {{ jTen.pcp}} <br> {{ jTen.low }} &#12288;
             {{jTen.high}}</h4>
         </div>
@@ -103,7 +103,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="dTen !=null"
           :class="dTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>德十</h4>
-          <h4>{{ dTen.bid}} &#12288; {{dTen.pc}} &#12288;
+          <h4>{{ dTen.last}} &#12288; {{dTen.pc}} &#12288;
             {{ dTen.pcp}} <br> {{ dTen.low }} &#12288;
             {{dTen.high}}</h4>
         </div>
@@ -115,7 +115,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yTen !=null"
           :class="yTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4> 意十</h4>
-          <h4>{{ yTen.bid}} &#12288; {{yTen.pc}} &#12288;
+          <h4>{{ yTen.last}} &#12288; {{yTen.pc}} &#12288;
             {{ yTen.pcp}} <br> {{ yTen.low }} &#12288;
             {{yTen.high}}</h4>
         </div>
@@ -127,7 +127,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yiTen !=null"
           :class="yiTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4> 英十</h4>
-          <h4>{{ yiTen.bid}} &#12288; {{yiTen.pc}} &#12288;
+          <h4>{{ yiTen.last}} &#12288; {{yiTen.pc}} &#12288;
             {{ yiTen.pcp}} <br> {{ yiTen.low }} &#12288;
             {{yiTen.high}}</h4>
         </div>
@@ -141,7 +141,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="fTen !=null"
           :class="fTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>法十</h4>
-          <h4>{{ fTen.bid}} &#12288; {{fTen.pc}} &#12288;
+          <h4>{{ fTen.last}} &#12288; {{fTen.pc}} &#12288;
             {{ fTen.pcp}} <br> {{ fTen.low }} &#12288;
             {{fTen.high}}</h4>
         </div>
@@ -153,7 +153,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="aTen !=null"
           :class="aTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>澳十</h4>
-          <h4>{{ aTen.bid}} &#12288; {{aTen.pc}} &#12288;
+          <h4>{{ aTen.last}} &#12288; {{aTen.pc}} &#12288;
             {{ aTen.pcp}} <br> {{ aTen.low }} &#12288;
             {{aTen.high}}</h4>
         </div>
@@ -165,7 +165,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="xTen !=null"
           :class="xTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>新十</h4>
-          <h4>{{ xTen.bid}} &#12288; {{xTen.pc}} &#12288;
+          <h4>{{ xTen.last}} &#12288; {{xTen.pc}} &#12288;
             {{ xTen.pcp}} <br> {{ xTen.low }} &#12288;
             {{xTen.high}}</h4>
         </div>
