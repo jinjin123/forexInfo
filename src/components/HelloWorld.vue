@@ -14,7 +14,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="BTC != null"
           :class="BTC.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
           <h4>BTC</h4>
-          <h4>{{ BTC.last_price }} &#12288; {{BTC.rise_fall_value}} &#12288;
+          <h4>{{ BTC.bid_price }} &#12288; {{BTC.rise_fall_value}} &#12288;
             {{ (BTC.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ BTC.open}} &#12288; {{ BTC.low }} &#12288;
             {{BTC.high}}</h4>
         </div>
@@ -26,7 +26,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ETH != null"
           :class="ETH.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
           <h4>ETH</h4>
-          <h4>{{ ETH.last_price }} &#12288; {{ETH.rise_fall_value}} &#12288;
+          <h4>{{ ETH.bid_price }} &#12288; {{ETH.rise_fall_value}} &#12288;
             {{ (ETH.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ ETH.open}} &#12288; {{ ETH.low }} &#12288;
             {{ETH.high}}</h4>
         </div>
@@ -38,7 +38,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EOS != null"
           :class="EOS.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>EOS</h4>
-          <h4>{{ EOS.last_price }} &#12288; {{EOS.rise_fall_value}} &#12288;
+          <h4>{{ EOS.bid_price }} &#12288; {{EOS.rise_fall_value}} &#12288;
             {{ (EOS.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ EOS.open}} &#12288; {{ EOS.low }} &#12288;
             {{EOS.high}}</h4>
         </div>
@@ -50,7 +50,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="OKB != null"
           :class="OKB.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>OKB</h4>
-          <h4>{{ OKB.last_price }} &#12288; {{OKB.rise_fall_value}} &#12288;
+          <h4>{{ OKB.bid_price }} &#12288; {{OKB.rise_fall_value}} &#12288;
             {{ (OKB.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ OKB.open}} &#12288; {{ OKB.low }} &#12288;
             {{OKB.high}}</h4>
         </div>
@@ -62,7 +62,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="LINK != null"
           :class="LINK.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
           <h4>LINK</h4>
-          <h4>{{ LINK.last_price }} &#12288; {{LINK.rise_fall_value}} &#12288;
+          <h4>{{ LINK.bid_price }} &#12288; {{LINK.rise_fall_value}} &#12288;
             {{ (LINK.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ LINK.open}} &#12288; {{ LINK.low }} &#12288;
             {{LINK.high}}</h4>
         </div>
@@ -79,7 +79,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="mTen !=null"
           :class="mTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>美十</h4>
-          <h4>{{ mTen.last}} &#12288; {{mTen.pc}} &#12288;
+          <h4>{{ mTen.bid}} &#12288; {{mTen.pc}} &#12288;
             {{ mTen.pcp}} <br> {{ mTen.low }} &#12288;
             {{mTen.high}}</h4>
         </div>
@@ -91,7 +91,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="jTen !=null"
           :class="jTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>日十</h4>
-          <h4>{{ jTen.last}} &#12288; {{jTen.pc}} &#12288;
+          <h4>{{ jTen.bid}} &#12288; {{jTen.pc}} &#12288;
             {{ jTen.pcp}} <br> {{ jTen.low }} &#12288;
             {{jTen.high}}</h4>
         </div>
@@ -103,7 +103,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="dTen !=null"
           :class="dTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>德十</h4>
-          <h4>{{ dTen.last}} &#12288; {{dTen.pc}} &#12288;
+          <h4>{{ dTen.bid}} &#12288; {{dTen.pc}} &#12288;
             {{ dTen.pcp}} <br> {{ dTen.low }} &#12288;
             {{dTen.high}}</h4>
         </div>
@@ -115,7 +115,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yTen !=null"
           :class="yTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4> 意十</h4>
-          <h4>{{ yTen.last}} &#12288; {{yTen.pc}} &#12288;
+          <h4>{{ yTen.bid}} &#12288; {{yTen.pc}} &#12288;
             {{ yTen.pcp}} <br> {{ yTen.low }} &#12288;
             {{yTen.high}}</h4>
         </div>
@@ -127,7 +127,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yiTen !=null"
           :class="yiTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4> 英十</h4>
-          <h4>{{ yiTen.last}} &#12288; {{yiTen.pc}} &#12288;
+          <h4>{{ yiTen.bid}} &#12288; {{yiTen.pc}} &#12288;
             {{ yiTen.pcp}} <br> {{ yiTen.low }} &#12288;
             {{yiTen.high}}</h4>
         </div>
@@ -141,7 +141,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="fTen !=null"
           :class="fTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>法十</h4>
-          <h4>{{ fTen.last}} &#12288; {{fTen.pc}} &#12288;
+          <h4>{{ fTen.bid}} &#12288; {{fTen.pc}} &#12288;
             {{ fTen.pcp}} <br> {{ fTen.low }} &#12288;
             {{fTen.high}}</h4>
         </div>
@@ -153,7 +153,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="aTen !=null"
           :class="aTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>澳十</h4>
-          <h4>{{ aTen.last}} &#12288; {{aTen.pc}} &#12288;
+          <h4>{{ aTen.bid}} &#12288; {{aTen.pc}} &#12288;
             {{ aTen.pcp}} <br> {{ aTen.low }} &#12288;
             {{aTen.high}}</h4>
         </div>
@@ -165,7 +165,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="xTen !=null"
           :class="xTen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>新十</h4>
-          <h4>{{ xTen.last}} &#12288; {{xTen.pc}} &#12288;
+          <h4>{{ xTen.bid}} &#12288; {{xTen.pc}} &#12288;
             {{ xTen.pcp}} <br> {{ xTen.low }} &#12288;
             {{xTen.high}}</h4>
         </div>
@@ -181,7 +181,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DJ !=null"
           :class="DJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>DJ30</h4>
-          <h4>{{ DJ.last_numeric}} &#8194; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
+          <h4>{{ DJ.bid}} &#8194; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>DJ30</h4>
@@ -191,7 +191,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NDSQ !=null"
           :class="NDSQ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NDSQ</h4>
-          <h4>{{ NDSQ.last_numeric}} &#8194; {{NDSQ.pc}} &#8194;
+          <h4>{{ NDSQ.bid}} &#8194; {{NDSQ.pc}} &#8194;
             {{ NDSQ.pcp}} <br> {{ NDSQ.low }}&#8194;
             {{NDSQ.high}}</h4>
         </div>
@@ -203,7 +203,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SPX !=null"
           :class="SPX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>SPX</h4>
-          <h4>{{ SPX.last_numeric}} &#8194; {{SPX.pc}} &#8194;
+          <h4>{{ SPX.bid}} &#8194; {{SPX.pc}} &#8194;
             {{ SPX.pcp}} <br> {{ SPX.low }} &#8194;
             {{SPX.high}}</h4>
         </div>
@@ -215,7 +215,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="JPN !=null"
           :class="JPN.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>JPN</h4>
-          <h4>{{ JPN.last_numeric}} &#8194; {{JPN.pc}} &#8194;
+          <h4>{{ JPN.bid}} &#8194; {{JPN.pc}} &#8194;
             {{ JPN.pcp}} <br> {{ JPN.low }} &#8194;
             {{JPN.high}}</h4>
         </div>
@@ -227,7 +227,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DAX !=null"
           :class="DAX.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>DAX</h4>
-          <h4>{{ DAX.last_numeric}} &#8194; {{DAX.pc}} &#8194;
+          <h4>{{ DAX.bid}} &#8194; {{DAX.pc}} &#8194;
             {{ DAX.pcp}} <br> {{ DAX.low }} &#8194;
             {{DAX.high}}</h4>
         </div>
@@ -241,7 +241,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FRA !=null"
           :class="FRA.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>FRA</h4>
-          <h4>{{ FRA.last_numeric}} &#8194; {{FRA.pc}} &#8194;
+          <h4>{{ FRA.bid}} &#8194; {{FRA.pc}} &#8194;
             {{ FRA.pcp}} <br> {{ FRA.low }} &#8194;
             {{FRA.high}}</h4>
         </div>
@@ -253,7 +253,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UK !=null"
           :class="UK.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>UK</h4>
-          <h4>{{ UK.last_numeric}} &#8194; {{UK.pc}} &#8194;
+          <h4>{{ UK.bid}} &#8194; {{UK.pc}} &#8194;
             {{ UK.pcp}} <br> {{ UK.low }} &#8194;
             {{UK.high}}</h4>
         </div>
@@ -265,7 +265,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AUS !=null"
           :class="AUS.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUS</h4>
-          <h4>{{ AUS.last_numeric}} &#8194;{{AUS.pc}} &#8194;
+          <h4>{{ AUS.bid}} &#8194;{{AUS.pc}} &#8194;
             {{ AUS.pcp}} <br> {{ AUS.low }} &#8194;
             {{AUS.high}}</h4>
         </div>
@@ -277,7 +277,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UpIn !=null"
           :class="UpIn.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>上证指数</h4>
-          <h4>{{ UpIn.last_numeric}} &#8194; {{UpIn.pc}} &#8194;
+          <h4>{{ UpIn.bid}} &#8194; {{UpIn.pc}} &#8194;
             {{ UpIn.pcp}} <br> {{ UpIn.low }} &#8194;
             {{UpIn.high}}</h4>
         </div>
@@ -289,7 +289,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Sin !=null"
           :class="Sin.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>深证指数</h4>
-          <h4>{{ Sin.last_numeric}} &#8194; {{Sin.pc}} &#8194;
+          <h4>{{ Sin.bid}} &#8194; {{Sin.pc}} &#8194;
             {{ Sin.pcp}} <br> {{ Sin.low }} &#8194;
             {{Sin.high}}</h4>
         </div>
@@ -303,7 +303,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="lshen !=null"
           :class="lshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>沪深300</h4>
-          <h4>{{ lshen.last_numeric}} &#8194; {{lshen.pc}} &#8194;
+          <h4>{{ lshen.bid}} &#8194; {{lshen.pc}} &#8194;
             {{ lshen.pcp}} <br> {{ lshen.low }} &#8194;
             {{lshen.high}}</h4>
         </div>
@@ -315,7 +315,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="hshen !=null"
           :class="hshen.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>恒生指数</h4>
-          <h4>{{ hshen.last_numeric}} &#8194; {{hshen.pc}} &#8194;
+          <h4>{{ hshen.bid}} &#8194; {{hshen.pc}} &#8194;
             {{ hshen.pcp}} <br> {{ hshen.low }} &#8194;
             {{hshen.high}}</h4>
         </div>
@@ -327,7 +327,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="China !=null"
           :class="China.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>富时50指数</h4>
-          <h4>{{ China.last_numeric}} &#8194; {{China.pc}} &#8194;
+          <h4>{{ China.bid}} &#8194; {{China.pc}} &#8194;
             {{ China.pcp}} <br> {{ China.low }} &#8194;
             {{China.high}}</h4>
         </div>
@@ -339,7 +339,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Vix !=null"
           :class="Vix.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>恐慌</h4>
-          <h4>{{ Vix.last_numeric}} &#12288; {{Vix.pc}} &#12288;
+          <h4>{{ Vix.bid}} &#12288; {{Vix.pc}} &#12288;
             {{ Vix.pcp}} <br> {{ Vix.low }} &#12288;
             {{Vix.high}}</h4>
         </div>
@@ -354,7 +354,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Ton !=null"
           :class="Ton.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>铜</h4>
-          <h4>{{ Ton.last_numeric}} &#12288; {{Ton.pc}} &#12288;
+          <h4>{{ Ton.bid}} &#12288; {{Ton.pc}} &#12288;
             {{ Ton.pcp}} <br> {{ Ton.low }} &#12288;
             {{Ton.high}}</h4>
         </div>
@@ -366,7 +366,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="boj !=null"
           :class="boj.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>铂金</h4>
-          <h4>{{ boj.last_numeric}} &#12288; {{boj.pc}} &#12288;
+          <h4>{{ boj.bid}} &#12288; {{boj.pc}} &#12288;
             {{ boj.pcp}} <br> {{ boj.low }} &#12288;
             {{boj.high}}</h4>
         </div>
@@ -378,7 +378,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Oil !=null"
           :class="Oil.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>原油</h4>
-          <h4>{{ Oil.last_numeric}} &#12288; {{Oil.pc}} &#12288;
+          <h4>{{ Oil.bid}} &#12288; {{Oil.pc}} &#12288;
             {{ Oil.pcp}} <br> {{ Oil.low }} &#12288;
             {{Oil.high}}</h4>
         </div>
@@ -390,7 +390,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="RMB !=null"
           :class="RMB.pc > 0 ?'down headerBox ': 'up headerBox'">
           <h4>离岸人民币</h4>
-          <h4>{{ RMB.last}} &#12288; {{RMB.pc}} &#12288;
+          <h4>{{ RMB.bid}} &#12288; {{RMB.pc}} &#12288;
             {{ RMB.pcp}} <br> {{ RMB.low }} &#12288;
             {{RMB.high}}</h4>
         </div>
@@ -402,7 +402,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Gold !=null"
           :class="Gold.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>Gold</h4>
-          <h4>{{ Gold.last}} &#12288; {{Gold.pc}} &#12288;
+          <h4>{{ Gold.bid}} &#12288; {{Gold.pc}} &#12288;
             {{ Gold.pcp}} <br> {{ Gold.low }} &#12288;
             {{Gold.high}}</h4>
         </div>
@@ -417,7 +417,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EU !=null"
           :class="EU.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/USD</h4>
-          <h4>{{ EU.last_close}} &#12288; {{EU.pc}} &#12288;
+          <h4>{{ EU.bid}} &#12288; {{EU.pc}} &#12288;
             {{ EU.pcp}} <br> {{ EU.low }} &#12288;
             {{EU.high}}</h4>
         </div>
@@ -429,7 +429,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GU !=null"
           :class="GU.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/USD</h4>
-          <h4>{{ GU.last_close}} &#12288; {{GU.pc}} &#12288;
+          <h4>{{ GU.bid}} &#12288; {{GU.pc}} &#12288;
             {{ GU.pcp}} <br> {{ GU.low }} &#12288;
             {{GU.high}}</h4>
         </div>
@@ -441,7 +441,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AU !=null"
           :class="AU.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUD/USD</h4>
-          <h4>{{ AU.last_close}} &#12288; {{AU.pc}} &#12288;
+          <h4>{{ AU.bid}} &#12288; {{AU.pc}} &#12288;
             {{ AU.pcp}} <br> {{ AU.low }} &#12288;
             {{AU.high}}</h4>
         </div>
@@ -453,7 +453,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NU !=null"
           :class="NU.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NZD/USD</h4>
-          <h4>{{ NU.last_close}} &#12288; {{NU.pc}} &#12288;
+          <h4>{{ NU.bid}} &#12288; {{NU.pc}} &#12288;
             {{ NU.pcp}} <br> {{ NU.low }} &#12288;
             {{NU.high}}</h4>
         </div>
@@ -465,7 +465,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Dollar !=null"
           :class="Dollar.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>美元</h4>
-          <h4>{{ Dollar.last}} &#12288; {{Dollar.pc}} &#12288;
+          <h4>{{ Dollar.bid}} &#12288; {{Dollar.pc}} &#12288;
             {{ Dollar.pcp}} <br> {{ Dollar.low }} &#12288;
             {{Dollar.high}}</h4>
         </div>
@@ -492,7 +492,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EJ !=null"
           :class="EJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/JPY</h4>
-          <h4>{{ EJ.last_close}} &#12288; {{EJ.pc}} &#12288;
+          <h4>{{ EJ.bid}} &#12288; {{EJ.pc}} &#12288;
             {{ EJ.pcp}} <br> {{ EJ.low }} &#12288;
             {{EJ.high}}</h4>
         </div>
@@ -504,7 +504,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GJ !=null"
           :class="GJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/JPY</h4>
-          <h4>{{ GJ.last_close}} &#12288; {{GJ.pc}} &#12288;
+          <h4>{{ GJ.bid}} &#12288; {{GJ.pc}} &#12288;
             {{ GJ.pcp}} <br> {{ GJ.low }} &#12288;
             {{GJ.high}}</h4>
         </div>
@@ -516,7 +516,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AJ !=null"
           :class="AJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUD/JPY</h4>
-          <h4>{{ AJ.last_close}} &#12288; {{AJ.pc}} &#12288;
+          <h4>{{ AJ.bid}} &#12288; {{AJ.pc}} &#12288;
             {{ AJ.pcp}} <br> {{ AJ.low }} &#12288;
             {{AJ.high}}</h4>
         </div>
@@ -528,7 +528,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NJ !=null"
           :class="NJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NZD/JPY</h4>
-          <h4>{{ NJ.last_close}} &#12288; {{NJ.pc}} &#12288;
+          <h4>{{ NJ.bid}} &#12288; {{NJ.pc}} &#12288;
             {{ NJ.pcp}} <br> {{ NJ.low }} &#12288;
             {{NJ.JPY}}</h4>
         </div>
@@ -540,7 +540,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UJ !=null"
           :class="UJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/JPY</h4>
-          <h4>{{ UJ.last_close}} &#12288; {{UJ.pc}} &#12288;
+          <h4>{{ UJ.bid}} &#12288; {{UJ.pc}} &#12288;
             {{ UJ.pcp}} <br> {{ UJ.low }} &#12288;
             {{UJ.high}}</h4>
         </div>
@@ -554,7 +554,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CJ !=null"
           :class="CJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>CAD/JPY</h4>
-          <h4>{{ CJ.last_close}} &#12288; {{CJ.pc}} &#12288;
+          <h4>{{ CJ.bid}} &#12288; {{CJ.pc}} &#12288;
             {{ CJ.pcp}} <br> {{ CJ.low }} &#12288;
             {{CJ.high}}</h4>
         </div>
@@ -566,7 +566,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CF !=null"
           :class="CF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>CAD/CHF</h4>
-          <h4>{{ CF.last_close}} &#12288; {{CF.pc}} &#12288;
+          <h4>{{ CF.bid}} &#12288; {{CF.pc}} &#12288;
             {{ CF.pcp}} <br> {{ CF.low }} &#12288;
             {{CF.high}}</h4>
         </div>
@@ -578,7 +578,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FJ !=null"
           :class="FJ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>CHF/JPY</h4>
-          <h4>{{ FJ.last_close}} &#12288; {{FJ.pc}} &#12288;
+          <h4>{{ FJ.bid}} &#12288; {{FJ.pc}} &#12288;
             {{ FJ.pcp}} <br> {{ FJ.low }} &#12288;
             {{FJ.high}}</h4>
         </div>
@@ -590,7 +590,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EF !=null"
           :class="EF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/CHF</h4>
-          <h4>{{ EF.last_close}} &#12288; {{EF.pc}} &#12288;
+          <h4>{{ EF.bid}} &#12288; {{EF.pc}} &#12288;
             {{ EF.pcp}} <br> {{ EF.low }} &#12288;
             {{EF.JPY}}</h4>
         </div>
@@ -602,7 +602,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GF !=null"
           :class="GF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/CHF</h4>
-          <h4>{{ GF.last_close}} &#12288; {{GF.pc}} &#12288;
+          <h4>{{ GF.bid}} &#12288; {{GF.pc}} &#12288;
             {{ GF.pcp}} <br> {{ GF.low }} &#12288;
             {{GF.high}}</h4>
         </div>
@@ -616,7 +616,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AF !=null"
           :class="AF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUD/CHF</h4>
-          <h4>{{ AF.last_close}} &#12288; {{AF.pc}} &#12288;
+          <h4>{{ AF.bid}} &#12288; {{AF.pc}} &#12288;
             {{ AF.pcp}} <br> {{ AF.low }} &#12288;
             {{AF.high}}</h4>
         </div>
@@ -628,7 +628,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NF !=null"
           :class="NF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NZD/CHF</h4>
-          <h4>{{ NF.last_close}} &#12288; {{NF.pc}} &#12288;
+          <h4>{{ NF.bid}} &#12288; {{NF.pc}} &#12288;
             {{ NF.pcp}} <br> {{ NF.low }} &#12288;
             {{NF.high}}</h4>
         </div>
@@ -640,7 +640,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UF !=null"
           :class="UF.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/CHF</h4>
-          <h4>{{ UF.last_close}} &#12288; {{UF.pc}} &#12288;
+          <h4>{{ UF.bid}} &#12288; {{UF.pc}} &#12288;
             {{ UF.pcp}} <br> {{ UF.low }} &#12288;
             {{UF.high}}</h4>
         </div>
@@ -655,7 +655,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ED !=null"
           :class="ED.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/CAD</h4>
-          <h4>{{ ED.last_close}} &#12288; {{ED.pc}} &#12288;
+          <h4>{{ ED.bid}} &#12288; {{ED.pc}} &#12288;
             {{ ED.pcp}} <br> {{ ED.low }} &#12288;
             {{ED.high}}</h4>
         </div>
@@ -667,7 +667,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GD !=null"
           :class="GD.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/CAD</h4>
-          <h4>{{ GD.last_close}} &#12288; {{GD.pc}} &#12288;
+          <h4>{{ GD.bid}} &#12288; {{GD.pc}} &#12288;
             {{ GD.pcp}} <br> {{ GD.low }} &#12288;
             {{GD.high}}</h4>
         </div>
@@ -679,7 +679,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AD !=null"
           :class="AD.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUD/CAD</h4>
-          <h4>{{ AD.last_close}} &#12288; {{AD.pc}} &#12288;
+          <h4>{{ AD.bid}} &#12288; {{AD.pc}} &#12288;
             {{ AD.pcp}} <br> {{ AD.low }} &#12288;
             {{AD.high}}</h4>
         </div>
@@ -691,7 +691,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ND !=null"
           :class="ND.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>NZD/CAD</h4>
-          <h4>{{ ND.last_close}} &#12288; {{ND.pc}} &#12288;
+          <h4>{{ ND.bid}} &#12288; {{ND.pc}} &#12288;
             {{ ND.pcp}} <br> {{ ND.low }} &#12288;
             {{ND.JPY}}</h4>
         </div>
@@ -703,7 +703,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UD !=null"
           :class="UD.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/CAD</h4>
-          <h4>{{ UD.last_close}} &#12288; {{UD.pc}} &#12288;
+          <h4>{{ UD.bid}} &#12288; {{UD.pc}} &#12288;
             {{ UD.pcp}} <br> {{ UD.low }} &#12288;
             {{UD.high}}</h4>
         </div>
@@ -717,7 +717,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EA !=null"
           :class="EA.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/AUD</h4>
-          <h4>{{ EA.last_close}} &#12288; {{EA.pc}} &#12288;
+          <h4>{{ EA.bid}} &#12288; {{EA.pc}} &#12288;
             {{ EA.pcp}} <br> {{ EA.low }} &#12288;
             {{EA.high}}</h4>
         </div>
@@ -729,7 +729,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GA !=null"
           :class="GA.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/AUD</h4>
-          <h4>{{ GA.last_close}} &#12288; {{GA.pc}} &#12288;
+          <h4>{{ GA.bid}} &#12288; {{GA.pc}} &#12288;
             {{ GA.pcp}} <br> {{ GA.low }} &#12288;
             {{GA.high}}</h4>
         </div>
@@ -741,7 +741,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EZ !=null"
           :class="EZ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>EUR/NZD</h4>
-          <h4>{{ EZ.last_close}} &#12288; {{EZ.pc}} &#12288;
+          <h4>{{ EZ.bid}} &#12288; {{EZ.pc}} &#12288;
             {{ EZ.pcp}} <br> {{ EZ.low }} &#12288;
             {{EZ.high}}</h4>
         </div>
@@ -753,7 +753,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GZ !=null"
           :class="GZ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>GBP/NZD</h4>
-          <h4>{{ GZ.last_close}} &#12288; {{GZ.pc}} &#12288;
+          <h4>{{ GZ.bid}} &#12288; {{GZ.pc}} &#12288;
             {{ GZ.pcp}} <br> {{ GZ.low }} &#12288;
             {{GZ.JPY}}</h4>
         </div>
@@ -765,7 +765,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AZ !=null"
           :class="AZ.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>AUD/NZD</h4>
-          <h4>{{ AZ.last_close}} &#12288; {{AZ.pc}} &#12288;
+          <h4>{{ AZ.bid}} &#12288; {{AZ.pc}} &#12288;
             {{ AZ.pcp}} <br> {{ AZ.low }} &#12288;
             {{AZ.high}}</h4>
         </div>
@@ -780,7 +780,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="TRY !=null"
           :class="TRY.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USR/TRY</h4>
-          <h4>{{ TRY.last_close}} &#12288; {{TRY.pc}} &#12288;
+          <h4>{{ TRY.bid}} &#12288; {{TRY.pc}} &#12288;
             {{ TRY.pcp}} <br> {{ TRY.low }} &#12288;
             {{TRY.high}}</h4>
         </div>
@@ -792,7 +792,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SEK !=null"
           :class="SEK.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/SEK</h4>
-          <h4>{{ SEK.last_close}} &#12288; {{SEK.pc}} &#12288;
+          <h4>{{ SEK.bid}} &#12288; {{SEK.pc}} &#12288;
             {{ SEK.pcp}} <br> {{ SEK.low }} &#12288;
             {{SEK.JPY}}</h4>
         </div>
@@ -804,7 +804,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="MXN !=null"
           :class="MXN.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/MXN</h4>
-          <h4>{{ MXN.last_close}} &#8197; {{MXN.pc}} &#8197;
+          <h4>{{ MXN.bid}} &#8197; {{MXN.pc}} &#8197;
             {{ MXN.pcp}} <br> {{ MXN.low }} &#8197;
             {{MXN.high}}</h4>
         </div>
@@ -816,7 +816,7 @@
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ZAR !=null"
           :class="ZAR.pc > 0 ?'up headerBox ': 'down headerBox'">
           <h4>USD/ZAR</h4>
-          <h4>{{ ZAR.last_close}} &#8197;  {{ZAR.pc}} &#8197;
+          <h4>{{ ZAR.bid}} &#8197;  {{ZAR.pc}} &#8197;
             {{ ZAR.pcp}} <br> {{ ZAR.low }} &#8197;
             {{ZAR.high}}</h4>
         </div>
@@ -1454,19 +1454,19 @@
         margin: 5px;
         border: none;
     }
-    
+
     h4 {
         margin: -1px;
     }
-    
+
     .up {
         background-color: red;
     }
-    
+
     .down {
         background-color: rgb(49, 190, 49);
     }
-    
+
     @keyframes fade {
         from {
             opacity: 1.0;
@@ -1478,7 +1478,7 @@
             opacity: 1.0;
         }
     }
-    
+
     @-webkit-keyframes fade {
         from {
             opacity: 1.0;
@@ -1490,7 +1490,7 @@
             opacity: 1.0;
         }
     }
-    
+
     .headerBox {
         color: #fff;
         font-size: 15px;
@@ -1499,33 +1499,33 @@
         -webkit-animation: fade 1s infinite;
         -webkit-animation-iteration-count: 1;
     }
-    
+
     .ivu-table .demo-table-info-row td {
         background-color: #a6e7b6;
         color: #fff;
     }
-    
+
     .ivu-table .demo-table-error-row td {
         background-color: #ff6600;
         color: #fff;
         ;
     }
-    
+
     .ivu-table td.demo-table-info-column {
         background-color: #2db7f5;
         color: #fff;
     }
-    
+
     .ivu-table .demo-table-info-cell-name {
         background-color: #2db7f5;
         color: #2db7f5;
     }
-    
+
     .ivu-table .demo-table-info-cell-age {
         background-color: #ff6600;
         color: #fff;
     }
-    
+
     .ivu-table .demo-table-info-cell-address {
         background-color: #187;
         color: #fff;
