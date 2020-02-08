@@ -1365,6 +1365,7 @@
             websocketclose(e) {
                 this.ws.close()
                 console.log("英为财情close")
+                  window.location.reload()
             },
             hearbeat() {
                 this.ws.send('["{\\\"_event\\\":\\\"heartbeat\\\",\\\"data\\\":\\\"h\\\"}"]')
@@ -1400,6 +1401,7 @@
             csclose(e) {
                 this.cs.close()
                 console.log("crypto connection close")
+                  window.location.reload()
             },
             cshearbeat() {
                 this.cs.send('{"action":"ping"}')
