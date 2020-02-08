@@ -5,15 +5,21 @@
       <!-- <iframe frameborder="0" width="830" height="530" scrolling="yes" :src="src"></iframe> -->
       <div style="width:830px;height:530px;border:1px solid #000">
         <i-table height="490" v-if="jTenNew !=null" :columns="jTenColumns" :data="jTenNew"></i-table>
-        <Page :total="dataCount" :page-size="pageSize" show-total class="paging" @on-change="changepage" @on-page-size-change="pages" show-sizer show-elevator show-total></Page>
+        <Page :total="dataCount" :page-size="pageSize" show-total class="paging" @on-change="changepage" @on-page-size-change="pages" show-sizer show-elevator show-total>
+        <input type="checkbox"  checked style="width: 30px" @click="handleUpdate">自动刷新</input>
+        </Page>
       </div>
     </el-col>
     <div>加密货币</div>
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="BTC != null"
-          :class="BTC.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
+                    :class="`${BTC.rise_fall_value >0 && BTC.rise_fall_value > 49? 'bigup headerBox': (BTC.rise_fall_value > 0? 'up headerBox': BTC.rise_fall_value < 0 && BTC.rise_fall_value < -40?' bigdown headerBox':'down headerBox') }`">
           <h4>BTC</h4>
+                <!--browser bug
+          <audio  type="audio/mp3" :autoplay="`${BTC.rise_fall_value > 49?'autoplay':BTC.rise_fall_value<-49 ?'autoplay' :''}`"  controls hidden="true">
+                <source src="../../static/audio/btc.mp3" >
+          </audio>-->
           <h4>{{ BTC.last_price }} &#12288; {{BTC.rise_fall_value}} &#12288;
             {{ (BTC.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ BTC.open}} &#12288; {{ BTC.low }} &#12288;
             {{BTC.high}}</h4>
@@ -24,7 +30,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ETH != null"
-          :class="ETH.rise_fall_value >0 ? 'up headerBox': 'down headerBox'">
+                   :class="`${ETH.rise_fall_value >0 && ETH.rise_fall_value > 49? 'bigup headerBox': (ETH.rise_fall_value > 0? 'up headerBox': ETH.rise_fall_value < 0 && ETH.rise_fall_value < -40?' bigdown headerBox':'down headerBox') }`">
+
           <h4>ETH</h4>
           <h4>{{ ETH.last_price }} &#12288; {{ETH.rise_fall_value}} &#12288;
             {{ (ETH.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ ETH.open}} &#12288; {{ ETH.low }} &#12288;
@@ -36,7 +43,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EOS != null"
-          :class="EOS.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
+                   :class="`${EOS.rise_fall_value >0 && EOS.rise_fall_value > 49? 'bigup headerBox': (EOS.rise_fall_value > 0? 'up headerBox': EOS.rise_fall_value < 0 && EOS.rise_fall_value < -40?' bigdown headerBox':'down headerBox') }`">
+
           <h4>EOS</h4>
           <h4>{{ EOS.last_price }} &#12288; {{EOS.rise_fall_value}} &#12288;
             {{ (EOS.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ EOS.open}} &#12288; {{ EOS.low }} &#12288;
@@ -48,7 +56,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="OKB != null"
-          :class="OKB.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
+               :class="`${OKB.rise_fall_value >0 && OKB.rise_fall_value > 49? 'bigup headerBox': (OKB.rise_fall_value > 0? 'up headerBox': OKB.rise_fall_value < 0 && OKB.rise_fall_value < -40?' bigdown headerBox':'down headerBox') }`">
+
           <h4>OKB</h4>
           <h4>{{ OKB.last_price }} &#12288; {{OKB.rise_fall_value}} &#12288;
             {{ (OKB.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ OKB.open}} &#12288; {{ OKB.low }} &#12288;
@@ -60,7 +69,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="LINK != null"
-          :class="LINK.rise_fall_value >0 ? 'up headerBox ': 'down headerBox'">
+                 :class="`${LINK.rise_fall_value >0 && LINK.rise_fall_value > 49? 'bigup headerBox': (LINK.rise_fall_value > 0? 'up headerBox': LINK.rise_fall_value < 0 && LINK.rise_fall_value < -40?' bigdown headerBox':'down headerBox') }`">
+
           <h4>LINK</h4>
           <h4>{{ LINK.last_price }} &#12288; {{LINK.rise_fall_value}} &#12288;
             {{ (LINK.rise_fall_rate*100).toFixed(2) + "%"}} <br> {{ LINK.open}} &#12288; {{ LINK.low }} &#12288;
@@ -179,7 +189,8 @@
       <!-- <el-col :span="5" v-for="(item,index) in aIndex" :key="index"> -->
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DJ !=null"
-          :class="DJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${DJ.rise_fall_value >0 && DJ.rise_fall_value > 50? 'bigup headerBox': (DJ.rise_fall_value > 0? 'up headerBox': DJ.rise_fall_value < 0 && DJ.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>DJ30</h4>
           <h4>{{ DJ.bid}} &#8194; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
         </div>
@@ -189,7 +200,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NDSQ !=null"
-          :class="NDSQ.pc > 0 ?'up headerBox ': 'down headerBox'">
+            :class="`${NDSQ.rise_fall_value >0 && NDSQ.rise_fall_value > 50? 'bigup headerBox': (NDSQ.rise_fall_value > 0? 'up headerBox': NDSQ.rise_fall_value < 0 && NDSQ.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>NDSQ</h4>
           <h4>{{ NDSQ.bid}} &#8194; {{NDSQ.pc}} &#8194;
             {{ NDSQ.pcp}} <br> {{ NDSQ.low }}&#8194;
@@ -201,7 +213,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SPX !=null"
-          :class="SPX.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${SPX.rise_fall_value >0 && SPX.rise_fall_value > 50? 'bigup headerBox': (SPX.rise_fall_value > 0? 'up headerBox': SPX.rise_fall_value < 0 && SPX.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>SPX</h4>
           <h4>{{ SPX.bid}} &#8194; {{SPX.pc}} &#8194;
             {{ SPX.pcp}} <br> {{ SPX.low }} &#8194;
@@ -213,7 +226,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="JPN !=null"
-          :class="JPN.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${JPN.rise_fall_value >0 && JPN.rise_fall_value > 50? 'bigup headerBox': (JPN.rise_fall_value > 0? 'up headerBox': JPN.rise_fall_value < 0 && JPN.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>JPN</h4>
           <h4>{{ JPN.bid}} &#8194; {{JPN.pc}} &#8194;
             {{ JPN.pcp}} <br> {{ JPN.low }} &#8194;
@@ -225,7 +239,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DAX !=null"
-          :class="DAX.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${DAX.rise_fall_value >0 && DAX.rise_fall_value > 50? 'bigup headerBox': (DAX.rise_fall_value > 0? 'up headerBox': DAX.rise_fall_value < 0 && DAX.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>DAX</h4>
           <h4>{{ DAX.bid}} &#8194; {{DAX.pc}} &#8194;
             {{ DAX.pcp}} <br> {{ DAX.low }} &#8194;
@@ -239,7 +254,8 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FRA !=null"
-          :class="FRA.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${FRA.rise_fall_value >0 && FRA.rise_fall_value > 50? 'bigup headerBox': (FRA.rise_fall_value > 0? 'up headerBox': FRA.rise_fall_value < 0 && FRA.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>FRA</h4>
           <h4>{{ FRA.bid}} &#8194; {{FRA.pc}} &#8194;
             {{ FRA.pcp}} <br> {{ FRA.low }} &#8194;
@@ -251,7 +267,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UK !=null"
-          :class="UK.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${UK.rise_fall_value >0 && UK.rise_fall_value > 50? 'bigup headerBox': (UK.rise_fall_value > 0? 'up headerBox': UK.rise_fall_value < 0 && UK.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>UK</h4>
           <h4>{{ UK.bid}} &#8194; {{UK.pc}} &#8194;
             {{ UK.pcp}} <br> {{ UK.low }} &#8194;
@@ -263,7 +280,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AUS !=null"
-          :class="AUS.pc > 0 ?'up headerBox ': 'down headerBox'">
+                 :class="`${AUS.rise_fall_value >0 && AUS.rise_fall_value > 50? 'bigup headerBox': (AUS.rise_fall_value > 0? 'up headerBox': AUS.rise_fall_value < 0 && AUS.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>AUS</h4>
           <h4>{{ AUS.bid}} &#8194;{{AUS.pc}} &#8194;
             {{ AUS.pcp}} <br> {{ AUS.low }} &#8194;
@@ -275,7 +293,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UpIn !=null"
-          :class="UpIn.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${UpIn.rise_fall_value >0 && UpIn.rise_fall_value > 10? 'bigup headerBox': (UpIn.rise_fall_value > 0? 'up headerBox': UpIn.rise_fall_value < 0 && UpIn.rise_fall_value < -10?' bigdown headerBox':'down headerBox') }`">
+
           <h4>上证指数</h4>
           <h4>{{ UpIn.bid}} &#8194; {{UpIn.pc}} &#8194;
             {{ UpIn.pcp}} <br> {{ UpIn.low }} &#8194;
@@ -287,7 +306,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Sin !=null"
-          :class="Sin.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${Sin.rise_fall_value >0 && Sin.rise_fall_value > 10? 'bigup headerBox': (Sin.rise_fall_value > 0? 'up headerBox': Sin.rise_fall_value < 0 && Sin.rise_fall_value < -10?' bigdown headerBox':'down headerBox') }`">
+
           <h4>深证指数</h4>
           <h4>{{ Sin.bid}} &#8194; {{Sin.pc}} &#8194;
             {{ Sin.pcp}} <br> {{ Sin.low }} &#8194;
@@ -301,7 +321,8 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="lshen !=null"
-          :class="lshen.pc > 0 ?'up headerBox ': 'down headerBox'">
+                 :class="`${lshen.rise_fall_value >0 && lshen.rise_fall_value > 0.5? 'bigup headerBox': (lshen.rise_fall_value > 0? 'up headerBox': lshen.rise_fall_value < 0 && lshen.rise_fall_value < -0.5?' bigdown headerBox':'down headerBox') }`">
+
           <h4>沪深300</h4>
           <h4>{{ lshen.bid}} &#8194; {{lshen.pc}} &#8194;
             {{ lshen.pcp}} <br> {{ lshen.low }} &#8194;
@@ -313,7 +334,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="hshen !=null"
-          :class="hshen.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${hshen.rise_fall_value >0 && hshen.rise_fall_value > 50? 'bigup headerBox': (hshen.rise_fall_value > 0? 'up headerBox': hshen.rise_fall_value < 0 && hshen.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>恒生指数</h4>
           <h4>{{ hshen.bid}} &#8194; {{hshen.pc}} &#8194;
             {{ hshen.pcp}} <br> {{ hshen.low }} &#8194;
@@ -325,7 +347,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="China !=null"
-          :class="China.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${China.rise_fall_value >0 && China.rise_fall_value > 50? 'bigup headerBox': (China.rise_fall_value > 0? 'up headerBox': China.rise_fall_value < 0 && China.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
+
           <h4>富时50指数</h4>
           <h4>{{ China.bid}} &#8194; {{China.pc}} &#8194;
             {{ China.pcp}} <br> {{ China.low }} &#8194;
@@ -337,7 +360,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Vix !=null"
-          :class="Vix.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${Vix.rise_fall_value >0 && Vix.rise_fall_value > 0.2? 'bigup headerBox': (Vix.rise_fall_value > 0? 'up headerBox': Vix.rise_fall_value < 0 && Vix.rise_fall_value < -0.2?' bigdown headerBox':'down headerBox') }`">
+
           <h4>恐慌</h4>
           <h4>{{ Vix.bid}} &#12288; {{Vix.pc}} &#12288;
             {{ Vix.pcp}} <br> {{ Vix.low }} &#12288;
@@ -345,6 +369,18 @@
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>恐慌</h4>
+        </div>
+      </el-col>
+            <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="Silver !=null"
+          :class="`${Silver.rise_fall_value >0 && Silver.rise_fall_value > 0.25? 'bigup headerBox': (Silver.rise_fall_value > 0? 'up headerBox': Silver.rise_fall_value < 0 && Silver.rise_fall_value < -0.25?' bigdown headerBox':'down headerBox') }`">
+          <h4>白银</h4>
+          <h4>{{ Silver.bid}} &#12288; {{Silver.pc}} &#12288;
+            {{ Silver.pcp}} <br> {{ Silver.low }} &#12288;
+            {{Silver.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4>白银</h4>
         </div>
       </el-col>
     </el-row>
@@ -388,7 +424,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="RMB !=null"
-          :class="RMB.pc > 0 ?'down headerBox ': 'up headerBox'">
+                   :class="`${RMB.rise_fall_value >0 && RMB.rise_fall_value > 0.200? 'bigup headerBox': (RMB.rise_fall_value > 0? 'up headerBox': RMB.rise_fall_value < 0 && RMB.rise_fall_value < -0.0200?' bigdown headerBox':'down headerBox') }`">
+
           <h4>离岸人民币</h4>
           <h4>{{ RMB.bid}} &#12288; {{RMB.pc}} &#12288;
             {{ RMB.pcp}} <br> {{ RMB.low }} &#12288;
@@ -400,7 +437,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Gold !=null"
-          :class="Gold.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${Gold.rise_fall_value >0 && Gold.rise_fall_value > 0.25? 'bigup headerBox': (Gold.rise_fall_value > 0? 'up headerBox': Gold.rise_fall_value < 0 && Gold.rise_fall_value < -0.25?' bigdown headerBox':'down headerBox') }`">
+
           <h4>Gold</h4>
           <h4>{{ Gold.bid}} &#12288; {{Gold.pc}} &#12288;
             {{ Gold.pcp}} <br> {{ Gold.low }} &#12288;
@@ -415,7 +453,8 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EU !=null"
-          :class="EU.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${EU.rise_fall_value >0 && EU.rise_fall_value > 0.0025? 'bigup headerBox': (EU.rise_fall_value > 0 ? 'up headerBox': EU.rise_fall_value < 0 && EU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
+
           <h4>EUR/USD</h4>
           <h4>{{ EU.bid}} &#12288; {{EU.pc}} &#12288;
             {{ EU.pcp}} <br> {{ EU.low }} &#12288;
@@ -427,7 +466,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GU !=null"
-          :class="GU.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${GBP.rise_fall_value >0 && GBP.rise_fall_value > 0.0025? 'bigup headerBox': (GBP.rise_fall_value > 0 ? 'up headerBox': GBP.rise_fall_value < 0 && GBP.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
+
           <h4>GBP/USD</h4>
           <h4>{{ GU.bid}} &#12288; {{GU.pc}} &#12288;
             {{ GU.pcp}} <br> {{ GU.low }} &#12288;
@@ -439,7 +479,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AU !=null"
-          :class="AU.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${AU.rise_fall_value >0 && AU.rise_fall_value > 0.0025? 'bigup headerBox': (AU.rise_fall_value > 0 ? 'up headerBox': AU.rise_fall_value < 0 && AU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
+
           <h4>AUD/USD</h4>
           <h4>{{ AU.bid}} &#12288; {{AU.pc}} &#12288;
             {{ AU.pcp}} <br> {{ AU.low }} &#12288;
@@ -451,7 +492,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NU !=null"
-          :class="NU.pc > 0 ?'up headerBox ': 'down headerBox'">
+                    :class="`${NU.rise_fall_value >0 && NU.rise_fall_value > 0.0025? 'bigup headerBox': (NU.rise_fall_value > 0 ? 'up headerBox': NU.rise_fall_value < 0 && NU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
+
           <h4>NZD/USD</h4>
           <h4>{{ NU.bid}} &#12288; {{NU.pc}} &#12288;
             {{ NU.pcp}} <br> {{ NU.low }} &#12288;
@@ -463,7 +505,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Dollar !=null"
-          :class="Dollar.pc > 0 ?'up headerBox ': 'down headerBox'">
+                   :class="`${Dollar.rise_fall_value >0 && Dollar.rise_fall_value > 0.100? 'bigup headerBox': (Dollar.rise_fall_value > 0 ? 'up headerBox': Dollar.rise_fall_value < 0 && Dollar.rise_fall_value < -0.100?' bigdown headerBox':'down headerBox') }`">
+
           <h4>美元</h4>
           <h4>{{ Dollar.bid}} &#12288; {{Dollar.pc}} &#12288;
             {{ Dollar.pcp}} <br> {{ Dollar.low }} &#12288;
@@ -490,7 +533,8 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EJ !=null"
-          :class="EJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                 :class="`${EJ.rise_fall_value >0 && EJ.rise_fall_value > 0.15? 'bigup headerBox': (EJ.rise_fall_value > 0 ? 'up headerBox': EJ.rise_fall_value < 0 && EJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+
           <h4>EUR/JPY</h4>
           <h4>{{ EJ.bid}} &#12288; {{EJ.pc}} &#12288;
             {{ EJ.pcp}} <br> {{ EJ.low }} &#12288;
@@ -502,7 +546,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GJ !=null"
-          :class="GJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${GJ.rise_fall_value >0 && GJ.rise_fall_value > 0.15? 'bigup headerBox': (GJ.rise_fall_value > 0 ? 'up headerBox': GJ.rise_fall_value < 0 && GJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+
           <h4>GBP/JPY</h4>
           <h4>{{ GJ.bid}} &#12288; {{GJ.pc}} &#12288;
             {{ GJ.pcp}} <br> {{ GJ.low }} &#12288;
@@ -514,7 +559,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AJ !=null"
-          :class="AJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${AJ.rise_fall_value >0 && AJ.rise_fall_value > 0.15? 'bigup headerBox': (AJ.rise_fall_value > 0 ? 'up headerBox': AJ.rise_fall_value < 0 && AJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>AUD/JPY</h4>
           <h4>{{ AJ.bid}} &#12288; {{AJ.pc}} &#12288;
             {{ AJ.pcp}} <br> {{ AJ.low }} &#12288;
@@ -526,7 +571,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NJ !=null"
-          :class="NJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${NJ.rise_fall_value >0 && NJ.rise_fall_value > 0.15? 'bigup headerBox': (NJ.rise_fall_value > 0 ? 'up headerBox': NJ.rise_fall_value < 0 && NJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>NZD/JPY</h4>
           <h4>{{ NJ.bid}} &#12288; {{NJ.pc}} &#12288;
             {{ NJ.pcp}} <br> {{ NJ.low }} &#12288;
@@ -538,7 +583,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UJ !=null"
-          :class="UJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${UJ.rise_fall_value >0 && UJ.rise_fall_value > 0.15? 'bigup headerBox': (UJ.rise_fall_value > 0 ? 'up headerBox': UJ.rise_fall_value < 0 && UJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/JPY</h4>
           <h4>{{ UJ.bid}} &#12288; {{UJ.pc}} &#12288;
             {{ UJ.pcp}} <br> {{ UJ.low }} &#12288;
@@ -552,7 +597,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CJ !=null"
-          :class="CJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${CJ.rise_fall_value >0 && CJ.rise_fall_value > 0.15? 'bigup headerBox': (CJ.rise_fall_value > 0 ? 'up headerBox': CJ.rise_fall_value < 0 && CJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>CAD/JPY</h4>
           <h4>{{ CJ.bid}} &#12288; {{CJ.pc}} &#12288;
             {{ CJ.pcp}} <br> {{ CJ.low }} &#12288;
@@ -564,7 +609,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CF !=null"
-          :class="CF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${CF.rise_fall_value >0 && CF.rise_fall_value > 0.15? 'bigup headerBox': (CF.rise_fall_value > 0 ? 'up headerBox': CF.rise_fall_value < 0 && CF.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>CAD/CHF</h4>
           <h4>{{ CF.bid}} &#12288; {{CF.pc}} &#12288;
             {{ CF.pcp}} <br> {{ CF.low }} &#12288;
@@ -576,7 +621,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FJ !=null"
-          :class="FJ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${FJ.rise_fall_value >0 && FJ.rise_fall_value > 0.15? 'bigup headerBox': (FJ.rise_fall_value > 0 ? 'up headerBox': FJ.rise_fall_value < 0 && FJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
           <h4>CHF/JPY</h4>
           <h4>{{ FJ.bid}} &#12288; {{FJ.pc}} &#12288;
             {{ FJ.pcp}} <br> {{ FJ.low }} &#12288;
@@ -588,7 +633,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EF !=null"
-          :class="EF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${EF.rise_fall_value >0 && EF.rise_fall_value > 0.0020? 'bigup headerBox': (EF.rise_fall_value > 0 ? 'up headerBox': EF.rise_fall_value < 0 && EF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>EUR/CHF</h4>
           <h4>{{ EF.bid}} &#12288; {{EF.pc}} &#12288;
             {{ EF.pcp}} <br> {{ EF.low }} &#12288;
@@ -600,7 +645,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GF !=null"
-          :class="GF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${GF.rise_fall_value >0 && GF.rise_fall_value > 0.0020? 'bigup headerBox': (GF.rise_fall_value > 0 ? 'up headerBox': GF.rise_fall_value < 0 && GF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>GBP/CHF</h4>
           <h4>{{ GF.bid}} &#12288; {{GF.pc}} &#12288;
             {{ GF.pcp}} <br> {{ GF.low }} &#12288;
@@ -614,7 +659,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AF !=null"
-          :class="AF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${AF.rise_fall_value >0 && AF.rise_fall_value > 0.0020? 'bigup headerBox': (AF.rise_fall_value > 0 ? 'up headerBox': AF.rise_fall_value < 0 && AF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>AUD/CHF</h4>
           <h4>{{ AF.bid}} &#12288; {{AF.pc}} &#12288;
             {{ AF.pcp}} <br> {{ AF.low }} &#12288;
@@ -626,7 +671,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NF !=null"
-          :class="NF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${NF.rise_fall_value >0 && NF.rise_fall_value > 0.0020? 'bigup headerBox': (NF.rise_fall_value > 0 ? 'up headerBox': NF.rise_fall_value < 0 && NF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>NZD/CHF</h4>
           <h4>{{ NF.bid}} &#12288; {{NF.pc}} &#12288;
             {{ NF.pcp}} <br> {{ NF.low }} &#12288;
@@ -638,7 +683,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UF !=null"
-          :class="UF.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${UF.rise_fall_value >0 && UF.rise_fall_value > 0.0020? 'bigup headerBox': (UF.rise_fall_value > 0 ? 'up headerBox': UF.rise_fall_value < 0 && UF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/CHF</h4>
           <h4>{{ UF.bid}} &#12288; {{UF.pc}} &#12288;
             {{ UF.pcp}} <br> {{ UF.low }} &#12288;
@@ -653,7 +698,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ED !=null"
-          :class="ED.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${ED.rise_fall_value >0 && ED.rise_fall_value > 0.0020? 'bigup headerBox': (ED.rise_fall_value > 0 ? 'up headerBox': ED.rise_fall_value < 0 && ED.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>EUR/CAD</h4>
           <h4>{{ ED.bid}} &#12288; {{ED.pc}} &#12288;
             {{ ED.pcp}} <br> {{ ED.low }} &#12288;
@@ -665,7 +710,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GD !=null"
-          :class="GD.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${GD.rise_fall_value >0 && GD.rise_fall_value > 0.0020? 'bigup headerBox': (GD.rise_fall_value > 0 ? 'up headerBox': GD.rise_fall_value < 0 && GD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>GBP/CAD</h4>
           <h4>{{ GD.bid}} &#12288; {{GD.pc}} &#12288;
             {{ GD.pcp}} <br> {{ GD.low }} &#12288;
@@ -677,7 +722,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AD !=null"
-          :class="AD.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${AD.rise_fall_value >0 && AD.rise_fall_value > 0.0020? 'bigup headerBox': (AD.rise_fall_value > 0 ? 'up headerBox': AD.rise_fall_value < 0 && AD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>AUD/CAD</h4>
           <h4>{{ AD.bid}} &#12288; {{AD.pc}} &#12288;
             {{ AD.pcp}} <br> {{ AD.low }} &#12288;
@@ -689,7 +734,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ND !=null"
-          :class="ND.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${ND.rise_fall_value >0 && ND.rise_fall_value > 0.0020? 'bigup headerBox': (ND.rise_fall_value > 0 ? 'up headerBox': ND.rise_fall_value < 0 && ND.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>NZD/CAD</h4>
           <h4>{{ ND.bid}} &#12288; {{ND.pc}} &#12288;
             {{ ND.pcp}} <br> {{ ND.low }} &#12288;
@@ -701,7 +746,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UD !=null"
-          :class="UD.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${UD.rise_fall_value >0 && UD.rise_fall_value > 0.0020? 'bigup headerBox': (UD.rise_fall_value > 0 ? 'up headerBox': UD.rise_fall_value < 0 && UD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/CAD</h4>
           <h4>{{ UD.bid}} &#12288; {{UD.pc}} &#12288;
             {{ UD.pcp}} <br> {{ UD.low }} &#12288;
@@ -715,7 +760,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EA !=null"
-          :class="EA.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${EA.rise_fall_value >0 && EA.rise_fall_value > 0.0020? 'bigup headerBox': (EA.rise_fall_value > 0 ? 'up headerBox': EA.rise_fall_value < 0 && EA.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>EUR/AUD</h4>
           <h4>{{ EA.bid}} &#12288; {{EA.pc}} &#12288;
             {{ EA.pcp}} <br> {{ EA.low }} &#12288;
@@ -727,7 +772,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GA !=null"
-          :class="GA.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${GA.rise_fall_value >0 && GA.rise_fall_value > 0.0020? 'bigup headerBox': (GA.rise_fall_value > 0 ? 'up headerBox': GA.rise_fall_value < 0 && GA.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>GBP/AUD</h4>
           <h4>{{ GA.bid}} &#12288; {{GA.pc}} &#12288;
             {{ GA.pcp}} <br> {{ GA.low }} &#12288;
@@ -739,7 +784,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EZ !=null"
-          :class="EZ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${EZ.rise_fall_value >0 && EZ.rise_fall_value > 0.0020? 'bigup headerBox': (EZ.rise_fall_value > 0 ? 'up headerBox': EZ.rise_fall_value < 0 && EZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>EUR/NZD</h4>
           <h4>{{ EZ.bid}} &#12288; {{EZ.pc}} &#12288;
             {{ EZ.pcp}} <br> {{ EZ.low }} &#12288;
@@ -751,7 +796,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GZ !=null"
-          :class="GZ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${GZ.rise_fall_value >0 && GZ.rise_fall_value > 0.0020? 'bigup headerBox': (GZ.rise_fall_value > 0 ? 'up headerBox': GZ.rise_fall_value < 0 && GZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>GBP/NZD</h4>
           <h4>{{ GZ.bid}} &#12288; {{GZ.pc}} &#12288;
             {{ GZ.pcp}} <br> {{ GZ.low }} &#12288;
@@ -763,7 +808,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AZ !=null"
-          :class="AZ.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${AZ.rise_fall_value >0 && AZ.rise_fall_value > 0.0020? 'bigup headerBox': (AZ.rise_fall_value > 0 ? 'up headerBox': AZ.rise_fall_value < 0 && AZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
           <h4>AUD/NZD</h4>
           <h4>{{ AZ.bid}} &#12288; {{AZ.pc}} &#12288;
             {{ AZ.pcp}} <br> {{ AZ.low }} &#12288;
@@ -778,7 +823,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="TRY !=null"
-          :class="TRY.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${TRY.rise_fall_value >0 && TRY.rise_fall_value > 0.0100? 'bigup headerBox': (TRY.rise_fall_value > 0 ? 'up headerBox': TRY.rise_fall_value < 0 && TRY.rise_fall_value < -0.0100?' bigdown headerBox':'down headerBox') }`">
           <h4>USR/TRY</h4>
           <h4>{{ TRY.bid}} &#12288; {{TRY.pc}} &#12288;
             {{ TRY.pcp}} <br> {{ TRY.low }} &#12288;
@@ -790,7 +835,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SEK !=null"
-          :class="SEK.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${SEK.rise_fall_value >0 && SEK.rise_fall_value > 0.0100? 'bigup headerBox': (SEK.rise_fall_value > 0 ? 'up headerBox': SEK.rise_fall_value < 0 && SEK.rise_fall_value < -0.0100?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/SEK</h4>
           <h4>{{ SEK.bid}} &#12288; {{SEK.pc}} &#12288;
             {{ SEK.pcp}} <br> {{ SEK.low }} &#12288;
@@ -802,7 +847,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="MXN !=null"
-          :class="MXN.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${MXN.rise_fall_value >0 && MXN.rise_fall_value > 0.0250? 'bigup headerBox': (MXN.rise_fall_value > 0 ? 'up headerBox': MXN.rise_fall_value < 0 && MXN.rise_fall_value < -0.0250?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/MXN</h4>
           <h4>{{ MXN.bid}} &#8197; {{MXN.pc}} &#8197;
             {{ MXN.pcp}} <br> {{ MXN.low }} &#8197;
@@ -814,7 +859,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ZAR !=null"
-          :class="ZAR.pc > 0 ?'up headerBox ': 'down headerBox'">
+                  :class="`${ZAR.rise_fall_value >0 && ZAR.rise_fall_value > 0.0250? 'bigup headerBox': (ZAR.rise_fall_value > 0 ? 'up headerBox': ZAR.rise_fall_value < 0 && ZAR.rise_fall_value < -0.0250?' bigdown headerBox':'down headerBox') }`">
           <h4>USD/ZAR</h4>
           <h4>{{ ZAR.bid}} &#8197;  {{ZAR.pc}} &#8197;
             {{ ZAR.pcp}} <br> {{ ZAR.low }} &#8197;
@@ -832,6 +877,10 @@
     export default {
         data() {
             return {
+               Ttimer: null,
+                Jtimer: null,
+                AutoUpdate: true,
+                Silver:null,
                 dataCount: 0,
                 pageSize: 10,
                 xia: 0,
@@ -944,8 +993,6 @@
                 trumpNew: null,
                 ws: null,
                 jTenNew: null,
-                // jsTen:null,
-                // jiTen:null,
             }
         },
         created() {
@@ -953,6 +1000,7 @@
             this.$axios
                 .get(
                     process.env.NLP_API + "/news/index/"
+                    //  "/news/index/"
                 )
                 .then(function(res) {
                     var tmp = res.data.data
@@ -972,8 +1020,8 @@
                 .catch(function(error) {
                     console.log(error);
                 })
-            setInterval(this.getTrump, 20000);
-            setInterval(this.getJten, 15000);
+          this.Ttimer = window.setInterval(this.getTrump,20000);
+          this.Jtimer = window.setInterval(this.getJten,15000);
         },
         mounted() {
             this.initWebSocket()
@@ -986,6 +1034,19 @@
             this.websocketclose()
         },
         methods: {
+            handleUpdate(){
+            if(this.AutoUpdate){
+                this.AutoUpdate = false;
+                clearInterval(this.Jtimer);
+                clearInterval(this.Ttimer);
+                console.log("关闭自动刷新");
+            }else{
+                  this.AutoUpdate = true;
+               this.Ttimer = window.setInterval(this.getTrump,20000);
+             this.Jtimer = window.setInterval(this.getJten,15000);
+                console.log("打开自动刷新");
+            }
+          },
             pages(num) { //修改每页显示条数时调用
                 this.pageSize = num;
                 this.changepage(1);
@@ -1000,6 +1061,7 @@
                 }
                 this.$axios
                     .post(process.env.NLP_API + "/news/jten_off/", playload)
+                    // .post("/news/jten_off/", playload)
                     .then(function(res) {
                         var tmp = res.data.data
                         var newList = []
@@ -1027,6 +1089,7 @@
                 }
                 this.$axios
                     .post(process.env.NLP_API + "/news/jten_off/", playload)
+                    // .post("/news/jten_off/", playload)
                     .then(function(res) {
                         var tmp = res.data.data
                         var jTenList = []
@@ -1048,115 +1111,13 @@
                         console.log(error);
                     })
             },
-            // initF() {
-            //     let that = this
-            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-            //         "force new connection": !0,
-            //         "reconnection": !1
-            //     })
-            //     socket.on('connect', function() {
-            //         socket.emit("switch_channel", 1, function() {})
-            //         console.log("forex socket conn")
-            //     })
-            //     socket.on('flash', function(data) {
-            //         if (data.data) {
-            //             let playload = {
-            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
-            //                 tag: data.id,
-            //                 time: data.time,
-            //                 exttime: data.time.split(" ")[0]
-            //             };
-            //             that.syncPost(playload)
-            //         }
-            //     })
-            //     socket.on('error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('connect_error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('disconnect', function() {
-            //         console.log("forex socket close")
-            //     })
-            // },
-            // initS() {
-            //     let that = this
-            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-            //         "force new connection": !0,
-            //         "reconnection": !1
-            //     })
-            //     socket.on('connect', function() {
-            //         socket.emit("switch_channel", 2, function() {})
-            //         console.log("shop socket conn")
-            //     })
-            //     socket.on('flash', function(data) {
-            //         if (data.data) {
-            //             let playload = {
-            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
-            //                 tag: data.id,
-            //                 time: data.time,
-            //                 exttime: data.time.split(" ")[0]
-            //             };
-            //             that.syncPost(playload)
-            //         }
-            //     })
-            //     socket.on('error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('connect_error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('disconnect', function() {
-            //         console.log("shop socket close")
-            //     })
-            // },
-            // initI() {
-            //     let that = this
-            //     var socket = io.connect('https://sscpgpecdd.jin10.com:8082', {
-            //         "force new connection": !0,
-            //         "reconnection": !1
-            //     })
-            //     socket.on('connect', function() {
-            //         console.log("index socket conn")
-            //         socket.emit("switch_channel", 3, function() {})
-            //     })
-            //     socket.on('flash', function(data) {
-            //         if (data.data) {
-            //             let playload = {
-            //                 content: data.data.content.replace("<b>", "").replace("</b>", ""),
-            //                 tag: data.id,
-            //                 time: data.time,
-            //                 exttime: data.time.split(" ")[0]
-            //             };
-            //             that.syncPost(playload)
-            //         }
 
-            //     })
-            //     socket.on('error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('connect_error', function(err) {
-            //         console.log(err)
-            //     })
-            //     socket.on('disconnect', function() {
-            //         console.log("index socket close")
-            //     })
-            // },
-            // syncPost(playload) {
-            //     this.$axios
-            //         .post("/news/jten/", playload)
-            //         .then(function(res) {
-            //             // console.log(res);
-            //         })
-            //         .catch(function(error) {
-            //             console.log(error);
-            //         });
-            // },
             getTrump() {
                 var self = this
                 this.$axios
                     .get(
                         process.env.NLP_API + "/news/trump/"
+                      //  "/news/trump/"
                     )
                     .then(function(res) {
                         var tmp = res.data.data
@@ -1207,7 +1168,7 @@
                 this.ws.onclose = this.websocketclose;
             },
             websocketonopen() {
-                this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-23878:%%pid-42410:%%pid-16:%%pid-4:%%pid-48:%%pid-51:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-14:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-23878:%%pidExt-42410:%%pidExt-16:%%pidExt-4:%%pidExt-48:%%pidExt-51:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-14:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]');
+                              this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-8836:%%pid-23878:%%pid-42410:%%pid-16:%%pid-4:%%pid-48:%%pid-51:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-14:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-8836:%%pidExt-23878:%%pidExt-42410:%%pidExt-16:%%pidExt-4:%%pidExt-48:%%pidExt-51:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-14:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]')
                 setInterval(this.hearbeat, 12000);
             },
             websocketonmessage(e) {
@@ -1392,6 +1353,9 @@
                         case "1":
                             this.EU = this.bondsdata;
                             break;
+                        case "8836":
+                            this.Silver = this.bondsdata;
+                            break;
                     }
                 }
             },
@@ -1458,13 +1422,19 @@
     h4 {
         margin: -1px;
     }
-
     .up {
-        background-color: red;
+        background-color: #ff7b7b;
     }
 
     .down {
-        background-color: rgb(49, 190, 49);
+        background-color:  #04d28f;
+    }
+
+    .bigup{
+        background: #b41020;
+    }
+    .bigdown{
+        background:#376c43
     }
 
     @keyframes fade {
@@ -1490,7 +1460,6 @@
             opacity: 1.0;
         }
     }
-
     .headerBox {
         color: #fff;
         font-size: 15px;
