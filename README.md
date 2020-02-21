@@ -5,6 +5,8 @@ cd dist jar -cvf web.war ./**
 
 ![demo](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forexspider.png)
 ![demo5](https://github.com/jinjin123/forexInfo/blob/master/src/assets/forexnews.png)
+![demo5](https://github.com/jinjin123/forexInfo/blob/master/src/assets/autotrade1.png)
+![demo5](https://github.com/jinjin123/forexInfo/blob/master/src/assets/autotrade2.png)
 ## Build Setup
 
 ``` bash
