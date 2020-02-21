@@ -87,9 +87,9 @@
       <el-col :span="5">
         <!-- <div style="width:200px;height:60px;border:1px solid #000" :id="item.id" v-if="bondsdata !=null":class="bondsdata.pc > 0 ?'up headerBox ': 'down headerBox'"> -->
         <div style="width:200px;height:60px;border:1px solid #000" v-if="mTen !=null"
-          :class="mTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="mTen.last > mTen.low ?'up headerBox ': 'down headerBox'">
           <h4>美十</h4>
-          <h4>{{ mTen.lst}} &#12288; {{mTen.pc}} &#12288;
+          <h4>{{ mTen.last}} &#12288; {{mTen.pc}} &#12288;
             {{ mTen.pcp}} <br> {{ mTen.low }} &#12288;
             {{mTen.high}}</h4>
         </div>
@@ -99,7 +99,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="jTen !=null"
-          :class="jTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="jTen.last> jTen.low ?'up headerBox ': 'down headerBox'">
           <h4>日十</h4>
           <h4>{{ jTen.last}} &#12288; {{jTen.pc}} &#12288;
             {{ jTen.pcp}} <br> {{ jTen.low }} &#12288;
@@ -111,7 +111,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="dTen !=null"
-          :class="dTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="dTen.last > jTen.low ?'up headerBox ': 'down headerBox'">
           <h4>德十</h4>
           <h4>{{ dTen.last}} &#12288; {{dTen.pc}} &#12288;
             {{ dTen.pcp}} <br> {{ dTen.low }} &#12288;
@@ -123,7 +123,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yTen !=null"
-          :class="yTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="yTen.last > yTen.low ?'up headerBox ': 'down headerBox'">
           <h4> 意十</h4>
           <h4>{{ yTen.last}} &#12288; {{yTen.pc}} &#12288;
             {{ yTen.pcp}} <br> {{ yTen.low }} &#12288;
@@ -135,7 +135,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="yiTen !=null"
-          :class="yiTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="yiTen.last > yiTen.low ?'up headerBox ': 'down headerBox'">
           <h4> 英十</h4>
           <h4>{{ yiTen.last}} &#12288; {{yiTen.pc}} &#12288;
             {{ yiTen.pcp}} <br> {{ yiTen.low }} &#12288;
@@ -149,7 +149,7 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="fTen !=null"
-          :class="fTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="fTen.last > fTen.low ?'up headerBox ': 'down headerBox'">
           <h4>法十</h4>
           <h4>{{ fTen.last}} &#12288; {{fTen.pc}} &#12288;
             {{ fTen.pcp}} <br> {{ fTen.low }} &#12288;
@@ -161,7 +161,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="aTen !=null"
-          :class="aTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="aTen.last > aTen.low ?'up headerBox ': 'down headerBox'">
           <h4>澳十</h4>
           <h4>{{ aTen.last}} &#12288; {{aTen.pc}} &#12288;
             {{ aTen.pcp}} <br> {{ aTen.low }} &#12288;
@@ -173,7 +173,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="xTen !=null"
-          :class="xTen.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="xTen.last > xTen.low ?'up headerBox ': 'down headerBox'">
           <h4>新十</h4>
           <h4>{{ xTen.last}} &#12288; {{xTen.pc}} &#12288;
             {{ xTen.pcp}} <br> {{ xTen.low }} &#12288;
@@ -183,16 +183,39 @@
           <h4>新十</h4>
         </div>
       </el-col>
+      <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="XL !=null"
+          :class="XL.last> XL.low ?'up headerBox ': 'down headerBox'">
+          <h4> 希腊十</h4>
+          <h4>{{ XL.last}} &#12288; {{XL.pc}} &#12288;
+            {{ XL.pcp}} <br> {{ XL.low }} &#12288;
+            {{XL.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4> 希腊十</h4>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="xby !=null"
+          :class="xbj.last> xby.low ?'up headerBox ': 'down headerBox'">
+          <h4> 希腊十</h4>
+          <h4>{{ xby.last}} &#12288; {{xby.pc}} &#12288;
+            {{ xby.pcp}} <br> {{ xby.low }} &#12288;
+            {{xby.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4> 希腊十</h4>
+        </div>
+      </el-col>
     </el-row>
     <div>指数</div>
     <el-row type="flex" class="row-bg" justify="start">
       <!-- <el-col :span="5" v-for="(item,index) in aIndex" :key="index"> -->
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DJ !=null"
-                   :class="`${DJ.rise_fall_value >0 && DJ.rise_fall_value > 50? 'bigup headerBox': (DJ.rise_fall_value > 0? 'up headerBox': DJ.rise_fall_value < 0 && DJ.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
-
+        :class="DJ.last_numeric > DJ.low ?'up headerBox ': 'down headerBox'">
           <h4>DJ30</h4>
-          <h4>{{ DJ.bid}} &#8194; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
+          <h4>{{ DJ.last_numeric}} &nbsp; {{DJ.pc}}&#8194; {{ DJ.pcp}} <br> {{ DJ.low }}&#8194; {{DJ.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>DJ30</h4>
@@ -200,10 +223,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NDSQ !=null"
-            :class="`${NDSQ.rise_fall_value >0 && NDSQ.rise_fall_value > 50? 'bigup headerBox': (NDSQ.rise_fall_value > 0? 'up headerBox': NDSQ.rise_fall_value < 0 && NDSQ.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
 
+        :class="NDSQ.last_numeric > NDSQ.low ?'up headerBox ': 'down headerBox'">
           <h4>NDSQ</h4>
-          <h4>{{ NDSQ.bid}} &#8194; {{NDSQ.pc}} &#8194;
+          <h4>{{ NDSQ.last_numeric}} &#8194; {{NDSQ.pc}} &#8194;
             {{ NDSQ.pcp}} <br> {{ NDSQ.low }}&#8194;
             {{NDSQ.high}}</h4>
         </div>
@@ -213,10 +236,9 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SPX !=null"
-                    :class="`${SPX.rise_fall_value >0 && SPX.rise_fall_value > 50? 'bigup headerBox': (SPX.rise_fall_value > 0? 'up headerBox': SPX.rise_fall_value < 0 && SPX.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
-
+          :class="SPX.last_numeric > SPX.low ?'up headerBox ': 'down headerBox'">
           <h4>SPX</h4>
-          <h4>{{ SPX.bid}} &#8194; {{SPX.pc}} &#8194;
+          <h4>{{ SPX.last_numeric}} &#8194; {{SPX.pc}} &#8194;
             {{ SPX.pcp}} <br> {{ SPX.low }} &#8194;
             {{SPX.high}}</h4>
         </div>
@@ -226,10 +248,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="JPN !=null"
-                    :class="`${JPN.rise_fall_value >0 && JPN.rise_fall_value > 50? 'bigup headerBox': (JPN.rise_fall_value > 0? 'up headerBox': JPN.rise_fall_value < 0 && JPN.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
 
+          :class="JPN.last_numeric > JPN.low ?'up headerBox ': 'down headerBox'">
           <h4>JPN</h4>
-          <h4>{{ JPN.bid}} &#8194; {{JPN.pc}} &#8194;
+          <h4>{{ JPN.last_numeric}} &#8194; {{JPN.pc}} &#8194;
             {{ JPN.pcp}} <br> {{ JPN.low }} &#8194;
             {{JPN.high}}</h4>
         </div>
@@ -239,10 +261,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="DAX !=null"
-                    :class="`${DAX.rise_fall_value >0 && DAX.rise_fall_value > 50? 'bigup headerBox': (DAX.rise_fall_value > 0? 'up headerBox': DAX.rise_fall_value < 0 && DAX.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
 
+          :class="DAX.last_numeric >DAX.low ?'up headerBox ': 'down headerBox'">
           <h4>DAX</h4>
-          <h4>{{ DAX.bid}} &#8194; {{DAX.pc}} &#8194;
+          <h4>{{ DAX.last_numeric}} &#8194; {{DAX.pc}} &#8194;
             {{ DAX.pcp}} <br> {{ DAX.low }} &#8194;
             {{DAX.high}}</h4>
         </div>
@@ -254,10 +276,9 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FRA !=null"
-                    :class="`${FRA.rise_fall_value >0 && FRA.rise_fall_value > 50? 'bigup headerBox': (FRA.rise_fall_value > 0? 'up headerBox': FRA.rise_fall_value < 0 && FRA.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
-
+        :class="FRA.last_numeric > FRA.low ?'up headerBox ': 'down headerBox'">
           <h4>FRA</h4>
-          <h4>{{ FRA.bid}} &#8194; {{FRA.pc}} &#8194;
+          <h4>{{ FRA.last_numeric}} &#8194; {{FRA.pc}} &#8194;
             {{ FRA.pcp}} <br> {{ FRA.low }} &#8194;
             {{FRA.high}}</h4>
         </div>
@@ -267,10 +288,9 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UK !=null"
-                  :class="`${UK.rise_fall_value >0 && UK.rise_fall_value > 50? 'bigup headerBox': (UK.rise_fall_value > 0? 'up headerBox': UK.rise_fall_value < 0 && UK.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
-
+        :class="UK.last_numeric > UK.low ?'up headerBox ': 'down headerBox'">
           <h4>UK</h4>
-          <h4>{{ UK.bid}} &#8194; {{UK.pc}} &#8194;
+          <h4>{{ UK.last_numeric}} &#8194; {{UK.pc}} &#8194;
             {{ UK.pcp}} <br> {{ UK.low }} &#8194;
             {{UK.high}}</h4>
         </div>
@@ -280,10 +300,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AUS !=null"
-                 :class="`${AUS.rise_fall_value >0 && AUS.rise_fall_value > 50? 'bigup headerBox': (AUS.rise_fall_value > 0? 'up headerBox': AUS.rise_fall_value < 0 && AUS.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
 
+        :class="AUS.last_numeric > AUS.low ?'up headerBox ': 'down headerBox'">
           <h4>AUS</h4>
-          <h4>{{ AUS.bid}} &#8194;{{AUS.pc}} &#8194;
+          <h4>{{ AUS.last_numeric}} &#8194;{{AUS.pc}} &#8194;
             {{ AUS.pcp}} <br> {{ AUS.low }} &#8194;
             {{AUS.high}}</h4>
         </div>
@@ -293,10 +313,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UpIn !=null"
-                   :class="`${UpIn.rise_fall_value >0 && UpIn.rise_fall_value > 10? 'bigup headerBox': (UpIn.rise_fall_value > 0? 'up headerBox': UpIn.rise_fall_value < 0 && UpIn.rise_fall_value < -10?' bigdown headerBox':'down headerBox') }`">
 
+        :class="UpIn.last_numeric > UpIn.low ?'up headerBox ': 'down headerBox'">
           <h4>上证指数</h4>
-          <h4>{{ UpIn.bid}} &#8194; {{UpIn.pc}} &#8194;
+          <h4>{{ UpIn.last_numeric}} &#8194; {{UpIn.pc}} &#8194;
             {{ UpIn.pcp}} <br> {{ UpIn.low }} &#8194;
             {{UpIn.high}}</h4>
         </div>
@@ -306,10 +326,9 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Sin !=null"
-                   :class="`${Sin.rise_fall_value >0 && Sin.rise_fall_value > 10? 'bigup headerBox': (Sin.rise_fall_value > 0? 'up headerBox': Sin.rise_fall_value < 0 && Sin.rise_fall_value < -10?' bigdown headerBox':'down headerBox') }`">
-
+        :class="Sin.last_numeric > Sin.low ?'up headerBox ': 'down headerBox'">
           <h4>深证指数</h4>
-          <h4>{{ Sin.bid}} &#8194; {{Sin.pc}} &#8194;
+          <h4>{{ Sin.last_numeric}} &#8194; {{Sin.pc}} &#8194;
             {{ Sin.pcp}} <br> {{ Sin.low }} &#8194;
             {{Sin.high}}</h4>
         </div>
@@ -321,10 +340,10 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="lshen !=null"
-                 :class="`${lshen.rise_fall_value >0 && lshen.rise_fall_value > 0.5? 'bigup headerBox': (lshen.rise_fall_value > 0? 'up headerBox': lshen.rise_fall_value < 0 && lshen.rise_fall_value < -0.5?' bigdown headerBox':'down headerBox') }`">
 
+        :class="lshen.last_numeric > lshen.low ?'up headerBox ': 'down headerBox'">
           <h4>沪深300</h4>
-          <h4>{{ lshen.bid}} &#8194; {{lshen.pc}} &#8194;
+          <h4>{{ lshen.last_numeric}} &#8194; {{lshen.pc}} &#8194;
             {{ lshen.pcp}} <br> {{ lshen.low }} &#8194;
             {{lshen.high}}</h4>
         </div>
@@ -334,10 +353,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="hshen !=null"
-                  :class="`${hshen.rise_fall_value >0 && hshen.rise_fall_value > 50? 'bigup headerBox': (hshen.rise_fall_value > 0? 'up headerBox': hshen.rise_fall_value < 0 && hshen.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
 
+        :class="hshen.last_numeric > hshen.low ?'up headerBox ': 'down headerBox'">
           <h4>恒生指数</h4>
-          <h4>{{ hshen.bid}} &#8194; {{hshen.pc}} &#8194;
+          <h4>{{ hshen.last_numeric}} &nbsp; {{hshen.pc}} &#8194;
             {{ hshen.pcp}} <br> {{ hshen.low }} &#8194;
             {{hshen.high}}</h4>
         </div>
@@ -347,10 +366,9 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="China !=null"
-                   :class="`${China.rise_fall_value >0 && China.rise_fall_value > 50? 'bigup headerBox': (China.rise_fall_value > 0? 'up headerBox': China.rise_fall_value < 0 && China.rise_fall_value < -50?' bigdown headerBox':'down headerBox') }`">
-
+        :class="China.last_numeric > China.low ?'up headerBox ': 'down headerBox'">
           <h4>富时50指数</h4>
-          <h4>{{ China.bid}} &#8194; {{China.pc}} &#8194;
+          <h4>{{ China.last_numeric}} &#8194; {{China.pc}} &#8194;
             {{ China.pcp}} <br> {{ China.low }} &#8194;
             {{China.high}}</h4>
         </div>
@@ -360,10 +378,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Vix !=null"
-                    :class="`${Vix.rise_fall_value >0 && Vix.rise_fall_value > 0.2? 'bigup headerBox': (Vix.rise_fall_value > 0? 'up headerBox': Vix.rise_fall_value < 0 && Vix.rise_fall_value < -0.2?' bigdown headerBox':'down headerBox') }`">
 
+        :class="Vix.last_numeric > Vix.low ?'up headerBox ': 'down headerBox'">
           <h4>恐慌</h4>
-          <h4>{{ Vix.bid}} &#12288; {{Vix.pc}} &#12288;
+          <h4>{{ Vix.last_numeric}} &#12288; {{Vix.pc}} &#12288;
             {{ Vix.pcp}} <br> {{ Vix.low }} &#12288;
             {{Vix.high}}</h4>
         </div>
@@ -373,7 +391,7 @@
       </el-col>
             <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Silver !=null"
-          :class="`${Silver.rise_fall_value >0 && Silver.rise_fall_value > 0.25? 'bigup headerBox': (Silver.rise_fall_value > 0? 'up headerBox': Silver.rise_fall_value < 0 && Silver.rise_fall_value < -0.25?' bigdown headerBox':'down headerBox') }`">
+        :class="Silver.last_numeric > Silver.low ?'up headerBox ': 'down headerBox'">
           <h4>白银</h4>
           <h4>{{ Silver.bid}} &#12288; {{Silver.pc}} &#12288;
             {{ Silver.pcp}} <br> {{ Silver.low }} &#12288;
@@ -388,7 +406,7 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Ton !=null"
-          :class="Ton.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="Ton.last_numeric >Ton.low ?'up headerBox ': 'down headerBox'">
           <h4>铜</h4>
           <h4>{{ Ton.bid}} &#12288; {{Ton.pc}} &#12288;
             {{ Ton.pcp}} <br> {{ Ton.low }} &#12288;
@@ -400,7 +418,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="boj !=null"
-          :class="boj.pc > 0 ?'up headerBox ': 'down headerBox'">
+          :class="boj.last_numeric > boj.low ?'up headerBox ': 'down headerBox'">
           <h4>铂金</h4>
           <h4>{{ boj.bid}} &#12288; {{boj.pc}} &#12288;
             {{ boj.pcp}} <br> {{ boj.low }} &#12288;
@@ -411,21 +429,20 @@
         </div>
       </el-col>
       <el-col :span="5">
-        <div style="width:200px;height:60px;border:1px solid #000" v-if="Oil !=null"
-          :class="Oil.pc > 0 ?'up headerBox ': 'down headerBox'">
-          <h4>原油</h4>
-          <h4>{{ Oil.bid}} &#12288; {{Oil.pc}} &#12288;
-            {{ Oil.pcp}} <br> {{ Oil.low }} &#12288;
-            {{Oil.high}}</h4>
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="bajin !=null"
+          :class="bajin.last_numeric > bajin.low ?'up headerBox ': 'down headerBox'">
+          <h4>钯金</h4>
+          <h4>{{ bajin.last_numeric}} &#12288; {{bajin.pc}} &#12288;
+            {{ bajin.pcp}} <br> {{ bajin.low }} &#12288;
+            {{bajin.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
-          <h4>原油</h4>
+          <h4>钯金</h4>
         </div>
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="RMB !=null"
-                   :class="`${RMB.rise_fall_value >0 && RMB.rise_fall_value > 0.200? 'bigup headerBox': (RMB.rise_fall_value > 0? 'up headerBox': RMB.rise_fall_value < 0 && RMB.rise_fall_value < -0.0200?' bigdown headerBox':'down headerBox') }`">
-
+          :class="RMB.last_numeric > RMB.low ?'up headerBox ': 'down headerBox'">
           <h4>离岸人民币</h4>
           <h4>{{ RMB.bid}} &#12288; {{RMB.pc}} &#12288;
             {{ RMB.pcp}} <br> {{ RMB.low }} &#12288;
@@ -437,10 +454,10 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Gold !=null"
-                   :class="`${Gold.rise_fall_value >0 && Gold.rise_fall_value > 0.25? 'bigup headerBox': (Gold.rise_fall_value > 0? 'up headerBox': Gold.rise_fall_value < 0 && Gold.rise_fall_value < -0.25?' bigdown headerBox':'down headerBox') }`">
 
+          :class="Gold.last_numeric > Gold.low ?'up headerBox ': 'down headerBox'">
           <h4>Gold</h4>
-          <h4>{{ Gold.bid}} &#12288; {{Gold.pc}} &#12288;
+          <h4>{{ Gold.last_numeric}} &#12288; {{Gold.pc}} &#12288;
             {{ Gold.pcp}} <br> {{ Gold.low }} &#12288;
             {{Gold.high}}</h4>
         </div>
@@ -453,8 +470,8 @@
     <el-row type="flex" class="row-bg" justify="start">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EU !=null"
-                    :class="`${EU.rise_fall_value >0 && EU.rise_fall_value > 0.0025? 'bigup headerBox': (EU.rise_fall_value > 0 ? 'up headerBox': EU.rise_fall_value < 0 && EU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
 
+          :class="EU.last_numeric > EU.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/USD</h4>
           <h4>{{ EU.bid}} &#12288; {{EU.pc}} &#12288;
             {{ EU.pcp}} <br> {{ EU.low }} &#12288;
@@ -466,8 +483,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GU !=null"
-                   :class="`${GBP.rise_fall_value >0 && GBP.rise_fall_value > 0.0025? 'bigup headerBox': (GBP.rise_fall_value > 0 ? 'up headerBox': GBP.rise_fall_value < 0 && GBP.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
 
+          :class="GU.last_numeric > GU.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/USD</h4>
           <h4>{{ GU.bid}} &#12288; {{GU.pc}} &#12288;
             {{ GU.pcp}} <br> {{ GU.low }} &#12288;
@@ -479,8 +496,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AU !=null"
-                  :class="`${AU.rise_fall_value >0 && AU.rise_fall_value > 0.0025? 'bigup headerBox': (AU.rise_fall_value > 0 ? 'up headerBox': AU.rise_fall_value < 0 && AU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
 
+          :class="AU.last_numeric > AU.low ?'up headerBox ': 'down headerBox'">
           <h4>AUD/USD</h4>
           <h4>{{ AU.bid}} &#12288; {{AU.pc}} &#12288;
             {{ AU.pcp}} <br> {{ AU.low }} &#12288;
@@ -492,8 +509,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NU !=null"
-                    :class="`${NU.rise_fall_value >0 && NU.rise_fall_value > 0.0025? 'bigup headerBox': (NU.rise_fall_value > 0 ? 'up headerBox': NU.rise_fall_value < 0 && NU.rise_fall_value < -0.0025?' bigdown headerBox':'down headerBox') }`">
 
+          :class="NU.last_numeric > NU.low ?'up headerBox ': 'down headerBox'">
           <h4>NZD/USD</h4>
           <h4>{{ NU.bid}} &#12288; {{NU.pc}} &#12288;
             {{ NU.pcp}} <br> {{ NU.low }} &#12288;
@@ -505,8 +522,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="Dollar !=null"
-                   :class="`${Dollar.rise_fall_value >0 && Dollar.rise_fall_value > 0.100? 'bigup headerBox': (Dollar.rise_fall_value > 0 ? 'up headerBox': Dollar.rise_fall_value < 0 && Dollar.rise_fall_value < -0.100?' bigdown headerBox':'down headerBox') }`">
 
+          :class="Dollar.last_numeric > Dollar.low ?'up headerBox ': 'down headerBox'">
           <h4>美元</h4>
           <h4>{{ Dollar.bid}} &#12288; {{Dollar.pc}} &#12288;
             {{ Dollar.pcp}} <br> {{ Dollar.low }} &#12288;
@@ -533,8 +550,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EJ !=null"
-                 :class="`${EJ.rise_fall_value >0 && EJ.rise_fall_value > 0.15? 'bigup headerBox': (EJ.rise_fall_value > 0 ? 'up headerBox': EJ.rise_fall_value < 0 && EJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
-
+          :class="EJ.last_numeric > EJ.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/JPY</h4>
           <h4>{{ EJ.bid}} &#12288; {{EJ.pc}} &#12288;
             {{ EJ.pcp}} <br> {{ EJ.low }} &#12288;
@@ -546,8 +562,8 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GJ !=null"
-                  :class="`${GJ.rise_fall_value >0 && GJ.rise_fall_value > 0.15? 'bigup headerBox': (GJ.rise_fall_value > 0 ? 'up headerBox': GJ.rise_fall_value < 0 && GJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
 
+          :class="GJ.last_numeric > GJ.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/JPY</h4>
           <h4>{{ GJ.bid}} &#12288; {{GJ.pc}} &#12288;
             {{ GJ.pcp}} <br> {{ GJ.low }} &#12288;
@@ -559,7 +575,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AJ !=null"
-                  :class="`${AJ.rise_fall_value >0 && AJ.rise_fall_value > 0.15? 'bigup headerBox': (AJ.rise_fall_value > 0 ? 'up headerBox': AJ.rise_fall_value < 0 && AJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="AJ.last_numeric > AJ.low ?'up headerBox ': 'down headerBox'">
           <h4>AUD/JPY</h4>
           <h4>{{ AJ.bid}} &#12288; {{AJ.pc}} &#12288;
             {{ AJ.pcp}} <br> {{ AJ.low }} &#12288;
@@ -571,11 +587,11 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NJ !=null"
-                  :class="`${NJ.rise_fall_value >0 && NJ.rise_fall_value > 0.15? 'bigup headerBox': (NJ.rise_fall_value > 0 ? 'up headerBox': NJ.rise_fall_value < 0 && NJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="NJ.last_numeric > NJ.low ?'up headerBox ': 'down headerBox'">
           <h4>NZD/JPY</h4>
           <h4>{{ NJ.bid}} &#12288; {{NJ.pc}} &#12288;
             {{ NJ.pcp}} <br> {{ NJ.low }} &#12288;
-            {{NJ.JPY}}</h4>
+            {{NJ.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>NZD/JPY</h4>
@@ -583,7 +599,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UJ !=null"
-                  :class="`${UJ.rise_fall_value >0 && UJ.rise_fall_value > 0.15? 'bigup headerBox': (UJ.rise_fall_value > 0 ? 'up headerBox': UJ.rise_fall_value < 0 && UJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="UJ.last_numeric > UJ.low ?'up headerBox ': 'down headerBox'">
           <h4>USD/JPY</h4>
           <h4>{{ UJ.bid}} &#12288; {{UJ.pc}} &#12288;
             {{ UJ.pcp}} <br> {{ UJ.low }} &#12288;
@@ -597,7 +613,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CJ !=null"
-                  :class="`${CJ.rise_fall_value >0 && CJ.rise_fall_value > 0.15? 'bigup headerBox': (CJ.rise_fall_value > 0 ? 'up headerBox': CJ.rise_fall_value < 0 && CJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="CJ.last_numeric > CJ.low ?'up headerBox ': 'down headerBox'">
           <h4>CAD/JPY</h4>
           <h4>{{ CJ.bid}} &#12288; {{CJ.pc}} &#12288;
             {{ CJ.pcp}} <br> {{ CJ.low }} &#12288;
@@ -609,7 +625,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="CF !=null"
-                  :class="`${CF.rise_fall_value >0 && CF.rise_fall_value > 0.15? 'bigup headerBox': (CF.rise_fall_value > 0 ? 'up headerBox': CF.rise_fall_value < 0 && CF.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="CF.last_numeric > CF.low ?'up headerBox ': 'down headerBox'">
           <h4>CAD/CHF</h4>
           <h4>{{ CF.bid}} &#12288; {{CF.pc}} &#12288;
             {{ CF.pcp}} <br> {{ CF.low }} &#12288;
@@ -621,7 +637,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="FJ !=null"
-                  :class="`${FJ.rise_fall_value >0 && FJ.rise_fall_value > 0.15? 'bigup headerBox': (FJ.rise_fall_value > 0 ? 'up headerBox': FJ.rise_fall_value < 0 && FJ.rise_fall_value < -0.15?' bigdown headerBox':'down headerBox') }`">
+          :class="FJ.last_numeric > FJ.low ?'up headerBox ': 'down headerBox'">
           <h4>CHF/JPY</h4>
           <h4>{{ FJ.bid}} &#12288; {{FJ.pc}} &#12288;
             {{ FJ.pcp}} <br> {{ FJ.low }} &#12288;
@@ -633,11 +649,11 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EF !=null"
-                  :class="`${EF.rise_fall_value >0 && EF.rise_fall_value > 0.0020? 'bigup headerBox': (EF.rise_fall_value > 0 ? 'up headerBox': EF.rise_fall_value < 0 && EF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="EF.last_numeric > EF.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/CHF</h4>
           <h4>{{ EF.bid}} &#12288; {{EF.pc}} &#12288;
             {{ EF.pcp}} <br> {{ EF.low }} &#12288;
-            {{EF.JPY}}</h4>
+            {{EF.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>EUR/CHF</h4>
@@ -645,7 +661,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GF !=null"
-                  :class="`${GF.rise_fall_value >0 && GF.rise_fall_value > 0.0020? 'bigup headerBox': (GF.rise_fall_value > 0 ? 'up headerBox': GF.rise_fall_value < 0 && GF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="GF.last_numeric > GF.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/CHF</h4>
           <h4>{{ GF.bid}} &#12288; {{GF.pc}} &#12288;
             {{ GF.pcp}} <br> {{ GF.low }} &#12288;
@@ -659,7 +675,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AF !=null"
-                  :class="`${AF.rise_fall_value >0 && AF.rise_fall_value > 0.0020? 'bigup headerBox': (AF.rise_fall_value > 0 ? 'up headerBox': AF.rise_fall_value < 0 && AF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="AF.last_numeric > AF.low ?'up headerBox ': 'down headerBox'">
           <h4>AUD/CHF</h4>
           <h4>{{ AF.bid}} &#12288; {{AF.pc}} &#12288;
             {{ AF.pcp}} <br> {{ AF.low }} &#12288;
@@ -671,7 +687,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="NF !=null"
-                  :class="`${NF.rise_fall_value >0 && NF.rise_fall_value > 0.0020? 'bigup headerBox': (NF.rise_fall_value > 0 ? 'up headerBox': NF.rise_fall_value < 0 && NF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="NF.last_numeric > NF.low ?'up headerBox ': 'down headerBox'">
           <h4>NZD/CHF</h4>
           <h4>{{ NF.bid}} &#12288; {{NF.pc}} &#12288;
             {{ NF.pcp}} <br> {{ NF.low }} &#12288;
@@ -683,7 +699,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UF !=null"
-                  :class="`${UF.rise_fall_value >0 && UF.rise_fall_value > 0.0020? 'bigup headerBox': (UF.rise_fall_value > 0 ? 'up headerBox': UF.rise_fall_value < 0 && UF.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="UF.last_numeric > UF.low ?'up headerBox ': 'down headerBox'">
           <h4>USD/CHF</h4>
           <h4>{{ UF.bid}} &#12288; {{UF.pc}} &#12288;
             {{ UF.pcp}} <br> {{ UF.low }} &#12288;
@@ -693,12 +709,24 @@
           <h4>USD/CHF</h4>
         </div>
       </el-col>
+      <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="Oil !=null"
+          :class="Oil.last_numeric > Oil.low ?'up headerBox ': 'down headerBox'">
+          <h4>原油</h4>
+          <h4>{{ Oil.bid}} &#12288; {{Oil.pc}} &#12288;
+            {{ Oil.pcp}} <br> {{ Oil.low }} &#12288;
+            {{Oil.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4>原油</h4>
+        </div>
+      </el-col>
     </el-row>
     <div>交叉盘</div>
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ED !=null"
-                  :class="`${ED.rise_fall_value >0 && ED.rise_fall_value > 0.0020? 'bigup headerBox': (ED.rise_fall_value > 0 ? 'up headerBox': ED.rise_fall_value < 0 && ED.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="ED.last_numeric > ED.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/CAD</h4>
           <h4>{{ ED.bid}} &#12288; {{ED.pc}} &#12288;
             {{ ED.pcp}} <br> {{ ED.low }} &#12288;
@@ -710,7 +738,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GD !=null"
-                  :class="`${GD.rise_fall_value >0 && GD.rise_fall_value > 0.0020? 'bigup headerBox': (GD.rise_fall_value > 0 ? 'up headerBox': GD.rise_fall_value < 0 && GD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="GD.last_numeric > GD.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/CAD</h4>
           <h4>{{ GD.bid}} &#12288; {{GD.pc}} &#12288;
             {{ GD.pcp}} <br> {{ GD.low }} &#12288;
@@ -722,7 +750,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AD !=null"
-                  :class="`${AD.rise_fall_value >0 && AD.rise_fall_value > 0.0020? 'bigup headerBox': (AD.rise_fall_value > 0 ? 'up headerBox': AD.rise_fall_value < 0 && AD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="AD.last_numeric > AD.low ?'up headerBox ': 'down headerBox'">
           <h4>AUD/CAD</h4>
           <h4>{{ AD.bid}} &#12288; {{AD.pc}} &#12288;
             {{ AD.pcp}} <br> {{ AD.low }} &#12288;
@@ -734,11 +762,11 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ND !=null"
-                  :class="`${ND.rise_fall_value >0 && ND.rise_fall_value > 0.0020? 'bigup headerBox': (ND.rise_fall_value > 0 ? 'up headerBox': ND.rise_fall_value < 0 && ND.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="ND.last_numeric > ND.low ?'up headerBox ': 'down headerBox'">
           <h4>NZD/CAD</h4>
           <h4>{{ ND.bid}} &#12288; {{ND.pc}} &#12288;
             {{ ND.pcp}} <br> {{ ND.low }} &#12288;
-            {{ND.JPY}}</h4>
+            {{ND.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>NZD/CAD</h4>
@@ -746,7 +774,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="UD !=null"
-                  :class="`${UD.rise_fall_value >0 && UD.rise_fall_value > 0.0020? 'bigup headerBox': (UD.rise_fall_value > 0 ? 'up headerBox': UD.rise_fall_value < 0 && UD.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="UD.last_numeric > UD.low ?'up headerBox ': 'down headerBox'">
           <h4>USD/CAD</h4>
           <h4>{{ UD.bid}} &#12288; {{UD.pc}} &#12288;
             {{ UD.pcp}} <br> {{ UD.low }} &#12288;
@@ -760,7 +788,7 @@
     <el-row type="flex" class="row-bg" justify="end">
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EA !=null"
-                  :class="`${EA.rise_fall_value >0 && EA.rise_fall_value > 0.0020? 'bigup headerBox': (EA.rise_fall_value > 0 ? 'up headerBox': EA.rise_fall_value < 0 && EA.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+        :class="EA.last_numeric > EA.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/AUD</h4>
           <h4>{{ EA.bid}} &#12288; {{EA.pc}} &#12288;
             {{ EA.pcp}} <br> {{ EA.low }} &#12288;
@@ -772,7 +800,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GA !=null"
-                  :class="`${GA.rise_fall_value >0 && GA.rise_fall_value > 0.0020? 'bigup headerBox': (GA.rise_fall_value > 0 ? 'up headerBox': GA.rise_fall_value < 0 && GA.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="GA.last_numeric > GA.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/AUD</h4>
           <h4>{{ GA.bid}} &#12288; {{GA.pc}} &#12288;
             {{ GA.pcp}} <br> {{ GA.low }} &#12288;
@@ -784,7 +812,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="EZ !=null"
-                  :class="`${EZ.rise_fall_value >0 && EZ.rise_fall_value > 0.0020? 'bigup headerBox': (EZ.rise_fall_value > 0 ? 'up headerBox': EZ.rise_fall_value < 0 && EZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="EZ.last_numeric > EZ.low ?'up headerBox ': 'down headerBox'">
           <h4>EUR/NZD</h4>
           <h4>{{ EZ.bid}} &#12288; {{EZ.pc}} &#12288;
             {{ EZ.pcp}} <br> {{ EZ.low }} &#12288;
@@ -796,11 +824,11 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="GZ !=null"
-                  :class="`${GZ.rise_fall_value >0 && GZ.rise_fall_value > 0.0020? 'bigup headerBox': (GZ.rise_fall_value > 0 ? 'up headerBox': GZ.rise_fall_value < 0 && GZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="GZ.last_numeric > GZ.low ?'up headerBox ': 'down headerBox'">
           <h4>GBP/NZD</h4>
           <h4>{{ GZ.bid}} &#12288; {{GZ.pc}} &#12288;
             {{ GZ.pcp}} <br> {{ GZ.low }} &#12288;
-            {{GZ.JPY}}</h4>
+            {{GZ.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>GBP/NZD</h4>
@@ -808,7 +836,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="AZ !=null"
-                  :class="`${AZ.rise_fall_value >0 && AZ.rise_fall_value > 0.0020? 'bigup headerBox': (AZ.rise_fall_value > 0 ? 'up headerBox': AZ.rise_fall_value < 0 && AZ.rise_fall_value < -0.0020?' bigdown headerBox':'down headerBox') }`">
+          :class="AZ.last_numeric > AZ.low ?'up headerBox ': 'down headerBox'">
           <h4>AUD/NZD</h4>
           <h4>{{ AZ.bid}} &#12288; {{AZ.pc}} &#12288;
             {{ AZ.pcp}} <br> {{ AZ.low }} &#12288;
@@ -821,9 +849,21 @@
     </el-row>
     <div>新兴市场</div>
     <el-row type="flex" class="row-bg" justify="end">
+       <el-col :span="5">
+        <div style="width:200px;height:60px;border:1px solid #000" v-if="SGD !=null"
+          :class="SGD.last_numeric > SGD.low ?'up headerBox ': 'down headerBox'">
+          <h4>USR/SGD</h4>
+          <h4>{{ SGD.bid}} &#12288; {{SGD.pc}} &#12288;
+            {{ SGD.pcp}} <br> {{ SGD.low }} &#12288;
+            {{SGD.high}}</h4>
+        </div>
+        <div style="width:200px;height:60px;border:1px solid #000" v-else>
+          <h4>USD/SGD</h4>
+        </div>
+      </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="TRY !=null"
-                  :class="`${TRY.rise_fall_value >0 && TRY.rise_fall_value > 0.0100? 'bigup headerBox': (TRY.rise_fall_value > 0 ? 'up headerBox': TRY.rise_fall_value < 0 && TRY.rise_fall_value < -0.0100?' bigdown headerBox':'down headerBox') }`">
+          :class="TRY.last_numeric > TRY.low ?'up headerBox ': 'down headerBox'">
           <h4>USR/TRY</h4>
           <h4>{{ TRY.bid}} &#12288; {{TRY.pc}} &#12288;
             {{ TRY.pcp}} <br> {{ TRY.low }} &#12288;
@@ -835,11 +875,11 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="SEK !=null"
-                  :class="`${SEK.rise_fall_value >0 && SEK.rise_fall_value > 0.0100? 'bigup headerBox': (SEK.rise_fall_value > 0 ? 'up headerBox': SEK.rise_fall_value < 0 && SEK.rise_fall_value < -0.0100?' bigdown headerBox':'down headerBox') }`">
+          :class="SEK.last_numeric > SEK.low ?'up headerBox ': 'down headerBox'">
           <h4>USD/SEK</h4>
           <h4>{{ SEK.bid}} &#12288; {{SEK.pc}} &#12288;
             {{ SEK.pcp}} <br> {{ SEK.low }} &#12288;
-            {{SEK.JPY}}</h4>
+            {{SEK.high}}</h4>
         </div>
         <div style="width:200px;height:60px;border:1px solid #000" v-else>
           <h4>USD/SEK</h4>
@@ -847,7 +887,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="MXN !=null"
-                  :class="`${MXN.rise_fall_value >0 && MXN.rise_fall_value > 0.0250? 'bigup headerBox': (MXN.rise_fall_value > 0 ? 'up headerBox': MXN.rise_fall_value < 0 && MXN.rise_fall_value < -0.0250?' bigdown headerBox':'down headerBox') }`">
+          :class="MXN.last_numeric > MXN.low?'up headerBox ': 'down headerBox'">
           <h4>USD/MXN</h4>
           <h4>{{ MXN.bid}} &#8197; {{MXN.pc}} &#8197;
             {{ MXN.pcp}} <br> {{ MXN.low }} &#8197;
@@ -859,7 +899,7 @@
       </el-col>
       <el-col :span="5">
         <div style="width:200px;height:60px;border:1px solid #000" v-if="ZAR !=null"
-                  :class="`${ZAR.rise_fall_value >0 && ZAR.rise_fall_value > 0.0250? 'bigup headerBox': (ZAR.rise_fall_value > 0 ? 'up headerBox': ZAR.rise_fall_value < 0 && ZAR.rise_fall_value < -0.0250?' bigdown headerBox':'down headerBox') }`">
+          :class="ZAR.last_numeric > ZAR.low ?'up headerBox ': 'down headerBox'">
           <h4>USD/ZAR</h4>
           <h4>{{ ZAR.bid}} &#8197;  {{ZAR.pc}} &#8197;
             {{ ZAR.pcp}} <br> {{ ZAR.low }} &#8197;
@@ -886,6 +926,8 @@
                 xia: 0,
                 myChart: {},
                 newNews: null,
+                bajin:null,
+                xby:null,
                 mTen: null,
                 jTen: null,
                 dTen: null,
@@ -899,6 +941,7 @@
                 EOS: null,
                 OKB: null,
                 DJ: null,
+                SGD:null,
                 NDSQ: null,
                 SPX: null,
                 JPN: null,
@@ -948,6 +991,7 @@
                 AU: null,
                 GU: null,
                 EU: null,
+                XL:null,
                 bondsdata: null,
                 Dollar: null,
                 Gold: null,
@@ -959,6 +1003,9 @@
                 }, {
                     title: "状态",
                     key: "status"
+                },{
+                      title: "时间",
+                    key: "time"
                 }],
                 trumpColumns: [{
                     title: "新闻",
@@ -999,7 +1046,7 @@
             var self = this;
             this.$axios
                 .get(
-                    process.env.NLP_API + "/news/index/"
+                   process.env.NLP_API + "/news/index/"
                     //  "/news/index/"
                 )
                 .then(function(res) {
@@ -1008,9 +1055,11 @@
                     for (var x = 0; x < tmp.length; x++) {
                         if (tmp[x].status == 0) {
                             tmp[x].status = "负面"
+                            tmp[x].time = tmp[x].time.replace("T", " ")
                             newList.push(tmp[x])
                         } else {
                             tmp[x].status = "正面"
+                            tmp[x].time = tmp[x].time.replace("T", " ")
                             newList.push(tmp[x])
                         }
                     }
@@ -1068,9 +1117,11 @@
                         for (var x = 0; x < tmp.length; x++) {
                             if (tmp[x].status == 0) {
                                 tmp[x].status = "负面"
+                                tmp[x].time = tmp[x].time.replace("T", " ")
                                 newList.push(tmp[x])
                             } else {
                                 tmp[x].status = "正面"
+                                tmp[x].time = tmp[x].time.replace("T", " ")
                                 newList.push(tmp[x])
                             }
                         }
@@ -1168,12 +1219,14 @@
                 this.ws.onclose = this.websocketclose;
             },
             websocketonopen() {
-                              this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-8836:%%pid-23878:%%pid-42410:%%pid-16:%%pid-4:%%pid-48:%%pid-51:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-14:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-8836:%%pidExt-23878:%%pidExt-42410:%%pidExt-16:%%pidExt-4:%%pidExt-48:%%pidExt-51:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-14:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]')
+              this.ws.send('["{\\\"_event\\\":\\\"bulk-subscribe\\\",\\\"tzID\\\":28,\\\"message\\\":\\\"pid-23806:%%pid-8883:%%pid-23983:%%pid-42:%%pid-8836:%%pid-23878:%%pid-42410:%%pid-4:%%pid-48:%%pid-14:%%pid-51:%%pid-16:%%pid-7:%%pid-52:%%pid-55:%%pid-50:%%pid-41:%%pid-18:%%pid-39:%%pid-17:%%pid-57:%%pid-56:%%pid-47:%%pid-54:%%pid-15:%%pid-53:%%pid-12:%%pid-10:%%pid-13:%%pid-49:%%pid-58:%%pid-11:%%pid-9:%%pid-3:%%pid-8:%%pid-5:%%pid-2:%%pid-1:%%pid-68:%%pid-8827:%%pid-7814:%%pid-7807:%%pid-7801:%%pid-7803:%%pid-7808:%%pid-7813:%%pid-7802:%%pid-7800:%%pid-7805:%%pid-961728:%%pid-8849:%%pid-8910:%%pid-8831:%%pid-8884:%%pid-940801:%%pid-942630:%%pid-44486:%%pid-40820:%%pid-23738:%%pid-23778:%%pid-23673:%%pid-23901:%%pid-23693:%%pid-23705:%%pidExt-23806:%%pidExt-8883:%%pidExt-23983:%%pidExt-42:%%pidExt-8836:%%pidExt-23878:%%pidExt-42410:%%pidExt-4:%%pidExt-48:%%pidExt-14:%%pidExt-51:%%pidExt-16:%%pidExt-7:%%pidExt-52:%%pidExt-55:%%pidExt-50:%%pidExt-41:%%pidExt-18:%%pidExt-39:%%pidExt-17:%%pidExt-57:%%pidExt-56:%%pidExt-47:%%pidExt-54:%%pidExt-15:%%pidExt-53:%%pidExt-12:%%pidExt-10:%%pidExt-13:%%pidExt-49:%%pidExt-58:%%pidExt-11:%%pidExt-9:%%pidExt-3:%%pidExt-8:%%pidExt-5:%%pidExt-2:%%pidExt-1:%%pidExt-68:%%pidExt-8827:%%pidExt-7814:%%pidExt-7807:%%pidExt-7801:%%pidExt-7803:%%pidExt-7808:%%pidExt-7813:%%pidExt-7802:%%pidExt-7800:%%pidExt-7805:%%pidExt-961728:%%pidExt-8849:%%pidExt-8910:%%pidExt-8831:%%pidExt-8884:%%pidExt-940801:%%pidExt-942630:%%pidExt-44486:%%pidExt-40820:%%pidExt-23738:%%pidExt-23778:%%pidExt-23673:%%pidExt-23901:%%pidExt-23693:%%pidExt-23705:\\\"}"]')
                 setInterval(this.hearbeat, 12000);
             },
             websocketonmessage(e) {
                 if (e.data.split("::").length > 1) {
                     this.bondsdata = JSON.parse(e.data.split("::")[1].replace(/\\/g, "").split('"}"]')[0])
+                    this.bondsdata.low = Number(this.bondsdata.low.replace(",",""))
+                    this.bondsdata.high = Number(this.bondsdata.high.replace(",",""))
                         // console.log(JSON.parse(e.data.split("::")[1].replace(/\\/g, "").split('"}"]')[0]))
                     switch (this.bondsdata.pid) {
                         case "23705":
@@ -1356,6 +1409,15 @@
                         case "8836":
                             this.Silver = this.bondsdata;
                             break;
+                        case "42":
+                            this.SGD =this.bondsdata
+                            break;
+                        case "23983":
+                            this.XL = this.bondsdata
+                        case "23806":
+                            this.xby = this.bondsdata
+                        case "8883":
+                            this.bajin =this.bondsdata
                     }
                 }
             },
@@ -1364,8 +1426,9 @@
             },
             websocketclose(e) {
                 this.ws.close()
+                alert("英为财情close");
                 console.log("英为财情close")
-                  window.location.reload()
+                //  window.location.reload()
             },
             hearbeat() {
                 this.ws.send('["{\\\"_event\\\":\\\"heartbeat\\\",\\\"data\\\":\\\"h\\\"}"]')
@@ -1400,8 +1463,9 @@
             },
             csclose(e) {
                 this.cs.close()
+                alert("crypto connection close");
                 console.log("crypto connection close")
-                  window.location.reload()
+                 // window.location.reload()
             },
             cshearbeat() {
                 this.cs.send('{"action":"ping"}')
